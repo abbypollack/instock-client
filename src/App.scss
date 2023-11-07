@@ -1,0 +1,23 @@
+@use './styles/partials/_mixins.scss' as *;
+@use "./styles/partials/_variables.scss" as *;
+
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('./assets/fonts/AvenirNextLTPro-Bold.otf') format('opentype'),
+    url('./assets/fonts/Alternative files/AvenirNextLTProBold.ttf') format('trueType');
+  font-weight: $font-weight-bold;
+}
+
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('./assets/fonts/AvenirNextLTPro-Regular.otf') format('opentype'),
+    url('./assets/fonts/Alternative files/AvenirNextLTPro.ttf') format('trueType');
+  ;
+  font-weight: $font-weight-regular;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
