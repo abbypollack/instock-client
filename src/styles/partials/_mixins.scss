@@ -1,6 +1,5 @@
 @use 'variables' as *;
 
-
 @mixin tablet {
     @media (min-width: 768px){
         @content;
@@ -14,25 +13,22 @@
 }
 
 @mixin mobile-header-text {
-    font-family: ‘titillium’;
     font-size: 1.75rem;
     line-height: 2.25rem;
     font-weight: $font-weight-bold;
   }
-  @mixin mobile-section-header-text {
-    font-family: ‘titillium’;
+
+@mixin mobile-section-header-text {
     font-size: .75rem;
     line-height: 1.25rem;
     font-weight: $font-weight-bold;
   }
-  @mixin mobile-subheader-text {
-    font-family: ‘titillium’;
+@mixin mobile-subheader-text {
     font-size: .8125rem;
     line-height: 1.125rem;
     font-weight: $font-weight-bold;
   }
-  @mixin mobile-body-text {
-    font-family: ‘titillium’;
+@mixin mobile-body-text {
     font-size: .8125rem;
     line-height: 1.125rem;
     font-weight: $font-weight-regular;
