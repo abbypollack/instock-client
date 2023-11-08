@@ -7,7 +7,7 @@ import './App.scss';
 // import InventoryPage from './pages/InventoryPage/InventoryPage';
 import WarehouseDetailsPage from './pages/WarehouseDetailsPage/WarehouseDetailsPage.js';
 // import WarehousePage from './pages/WarehousePage/WarehousePage';
-// // import Header from './components/Header/Header.js';
+import Header from './components/Header/Header.js';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from './components/Footer/Footer.js';
 import InventoryPage from "./pages/InventoryPage/InventoryPage.js";
