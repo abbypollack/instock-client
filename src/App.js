@@ -5,7 +5,7 @@ import './App.scss';
 // import EditWarehouse from './pages/EditWarehouse/EditWarehouse';
 // import InventoryItemDetails from './pages/InventoryItemDetails/InventoryItemDetails';
 // import InventoryPage from './pages/InventoryPage/InventoryPage';
-// import WarehouseDetails from './pages/WarehouseDetails/WarehouseDetails';
+import WarehouseDetailsPage from './pages/WarehouseDetailsPage/WarehouseDetailsPage.js';
 // import WarehousePage from './pages/WarehousePage/WarehousePage';
 // // import Header from './components/Header/Header.js';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -19,7 +19,7 @@ function App() {
             {/* <Header /> */}
             <Routes>
                 {/* <Route path="" element={<WarehousePage />} /> */}
-                {/* <Route path="" element={<WarehouseDetails />} /> */}
+                <Route path="/details" element={<WarehouseDetailsPage />} />
                 <Route path="/" element={<InventoryPage/>} />
                 {/* <Route path="" element={<InventoryItemDetails />} /> */}
                 {/* <Route path="" element={<EditWarehouse />} /> */}

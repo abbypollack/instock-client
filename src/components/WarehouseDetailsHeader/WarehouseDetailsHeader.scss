@@ -1,0 +1,27 @@
+.warehouse-inventory {
+    display: flex;
+    flex-direction: column;
+    margin: 1.25rem;
+    width: 100%;
+    &__header {
+    }
+    &__subheader {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+        font-size: .75rem;
+        & h3 {
+            text-transform: uppercase;
+        }
+        &--address {
+
+        }
+        &--name {
+
+        }
+        &--info {
+
+        }
+    }
+}
