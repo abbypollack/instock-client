@@ -1,4 +1,4 @@
-// import './App.scss';
+import './App.scss';
 // import AddInventoryItem from './pages/AddInventoryItem/AddInventoryItem';
 // import AddNewWarehouse from './pages/AddNewWarehouse/AddNewWarehouse';
 // import EditInventoryItem from './pages/EditInventoryItem/EditInventoryItem';
@@ -16,18 +16,17 @@ import InventoryPage from "./pages/InventoryPage/InventoryPage.js";
 function App() {
     return (
         <BrowserRouter>
-                {/* <Header /> */}
-             {/* <Routes> */}
+            {/* <Header /> */}
+            <Routes>
                 {/* <Route path="" element={<WarehousePage />} /> */}
                 {/* <Route path="" element={<WarehouseDetails />} /> */}
-                {/* <Route path="" element={<InventoryPage/>} /> */}
+                <Route path="/" element={<InventoryPage/>} />
                 {/* <Route path="" element={<InventoryItemDetails />} /> */}
                 {/* <Route path="" element={<EditWarehouse />} /> */}
                 {/* <Route path="" element={<EditInventoryItem/>} /> */}
                 {/* <Route path="" element={<AddNewWarehouse />} /> */}
                 {/* <Route path="" element={<AddInventoryItem />} /> */}
-                {/* </Routes> */}
-            <InventoryPage />
+                </Routes>
             <Footer />
         </BrowserRouter> 
     );
