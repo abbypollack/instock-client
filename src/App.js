@@ -10,24 +10,25 @@ import WarehousePage from './pages/WarehousePage/WarehousePage';
 // import Header from './components/Header/Header.js';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from './components/Footer/Footer.js';
+import InventoryPage from "./pages/InventoryPage/InventoryPage.js";
 
 
 function App() {
     return (
         <BrowserRouter>
-            {/* <Header /> */}
+            <Header />
             <Routes>
-            <Route path="" element={<WarehousePage />} />
-            <Route path="" element={<WarehouseDetails />} />
-            <Route path="" element={<InventoryPage/>} />
-            <Route path="" element={<InventoryItemDetails />} />
-            <Route path="" element={<EditWarehouse />} />
-            <Route path="" element={<EditInventoryItem/>} />
-            <Route path="" element={<AddNewWarehouse />} />
-            <Route path="" element={<AddInventoryItem />} />
-            </Routes>
+                {/* <Route path="" element={<WarehousePage />} /> */}
+                {/* <Route path="" element={<WarehouseDetails />} /> */}
+                <Route path="/" element={<InventoryPage/>} />
+                {/* <Route path="" element={<InventoryItemDetails />} /> */}
+                {/* <Route path="" element={<EditWarehouse />} /> */}
+                {/* <Route path="" element={<EditInventoryItem/>} /> */}
+                {/* <Route path="" element={<AddNewWarehouse />} /> */}
+                {/* <Route path="" element={<AddInventoryItem />} /> */}
+                </Routes>
             <Footer />
-        </BrowserRouter>
+        </BrowserRouter> 
     );
 }
 
