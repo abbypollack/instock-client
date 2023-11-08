@@ -1,6 +1,6 @@
 @use '../partials/variables' as *;
 @use '../partials/mixins' as *;
-@use '../partials/fonts' as *;
+@use './_typography.scss' as *;
 * {
     text-decoration: none;
     list-style-type: none;

@@ -12,9 +12,17 @@ function EditInventoryItemComponent({ itemId }) {
         warehouse: '',
     });
     const [errors, setErrors] = useState({});
+    const [warehouses, setWarehouses] = useState([]);
+    const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        // TODO: Fetch the item data from the API and populate the form
+        // TODO: Fetch the item data from the API & populate the form
+        // TODO: Fetch the list of warehouses from the API
+        // setWarehouses(response.data);
+
+        // TODO: Fetch the list of categories from the API
+        // setCategories(response.data);
+
     }, [itemId]);
 
     const handleChange = (e) => {
@@ -83,7 +91,6 @@ function EditInventoryItemComponent({ itemId }) {
             />
             {errors.itemName && <p className="error">{errors.itemName}</p>}
 
-            {/* Description Field */}
             <label htmlFor="description">Description:</label>
             <textarea
                 id="description"
@@ -93,7 +100,6 @@ function EditInventoryItemComponent({ itemId }) {
             ></textarea>
             {errors.description && <p className="error">{errors.description}</p>}
 
-            {/* Category Dropdown */}
             <label htmlFor="category">Category:</label>
             <select
                 id="category"
@@ -102,7 +108,9 @@ function EditInventoryItemComponent({ itemId }) {
                 onChange={handleChange}
             >
                 <option value="">Select a category</option>
-                {/* Add category options here */}
+                {categories.map((category) => (
+                    <option key={category} value={category}>{category}</option>
+                ))}
             </select>
             {errors.category && <p className="error">{errors.category}</p>}
 
@@ -128,7 +136,7 @@ function EditInventoryItemComponent({ itemId }) {
                     Out of Stock
                 </label>
             </div>
-            
+
             {formData.status === 'in stock' && (
                 <>
                     <label htmlFor="quantity">Quantity:</label>
@@ -144,12 +152,15 @@ function EditInventoryItemComponent({ itemId }) {
                 </>
             )}
             <label htmlFor="warehouse">Warehouse:</label>
-            <select // TO-DO: Populate with options from database
+            <select
                 id="warehouse"
                 name="warehouse"
                 value={formData.warehouse}
                 onChange={handleChange}
             >
+                {warehouses.map((warehouse) => (
+                    <option key={warehouse.id} value={warehouse.id}>{warehouse.warehouse_name}</option>
+                ))}
             </select>
             {errors.warehouse && <p className="error">{errors.warehouse}</p>}
             <button type="submit">Save</button>
