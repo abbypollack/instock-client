@@ -10,10 +10,14 @@ function Header(){
                     <img src={Logo} alt='InStock-Logo'></img>
                 </NavLink>
                 
-                <ul className='header__links'>
-                    <li className='header__links-warehouses'>WareHouses</li>
-                    <li className='header__links-inventory'>Inventory</li>
-                </ul>
+                <NavLink>
+                    <ul className='header__links'>
+                        
+                        <li><a href='/WarehousePage' className='header__links-warehouses'>Warehouses</a></li>
+                        <li><a href='/InventoryPage' className='header__links-inventory'>Inventory</a></li>
+                        
+                    </ul>
+                </NavLink>
             </section>
         </header>
     );

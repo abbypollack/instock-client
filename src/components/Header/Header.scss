@@ -1,20 +1,43 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/typography' as *;
+@use '../../styles/partials/mixins' as *; 
+
+
 .header{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #232940;
+    background-color: $background-graphite;
+    @include tablet{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: .625rem;
+    }
 
     &__logo{
         display:flex;
         padding-top: 1.25rem;
+        @include tablet{
+            padding-left: 4rem;
+        }
     }
     &__links{
         display: flex;
         list-style: none;
         padding: 1.25rem;
+        @include mobile-body-text;
+        @include tablet{
+            padding-right: 2rem;
+        }
+        @include desktop{
+            padding-right: 4rem;
+            @include desktop-body-text;
+        }
 
         :active{
-            background-color: #5C667E;
+            background-color: blue;
             border-radius: 30px;
         }
         
@@ -24,14 +47,16 @@
             padding-left: .625rem;
             padding-top: .1875rem;
             padding-bottom: .1875rem;
-            color: white;
+            color: $primary-white;
+            text-decoration: none;
         }
         &-inventory{
             padding-left: .625rem;
             padding-right: .625rem;
             padding-top: .1875rem;
             padding-bottom: .1875rem;
-            color: white;
+            color: $primary-white;
+            text-decoration: none;
         }
     }
 }
