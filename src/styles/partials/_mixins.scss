@@ -19,46 +19,69 @@
     line-height: 2.25rem;
     font-weight: $font-weight-bold;
   }
-  @mixin mobile-section-header-text {
+  @mixin mobile-sub-header-text {
     font-family: ‘titillium’;
-    font-size: .75rem;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: $font-weight-bold;
+  }
+  @mixin mobile-labels-links {
+    font-family: ‘titillium’;
+    font-size: .8125rem;
     line-height: 1.25rem;
     font-weight: $font-weight-bold;
   }
-  @mixin mobile-subheader-text {
+  @mixin mobile-table-header {
     font-family: ‘titillium’;
-    font-size: .8125rem;
-    line-height: 1.125rem;
-    font-weight: $font-weight-bold;
+    font-size: .6875rem;
+    line-height: 1rem;
+    font-weight: $font-weight-regular;
   }
-  @mixin mobile-body-text {
+  @mixin mobile-body-large {
+    font-family: ‘titillium’;
+    font-size: .0094rem;
+    line-height: 1.625rem;
+    font-weight: $font-weight-regular;
+  }
+  @mixin mobile-body-medium {
     font-family: ‘titillium’;
     font-size: .8125rem;
-    line-height: 1.125rem;
+    line-height: 1.25rem;
+    font-weight: $font-weight-regular;
+  }
+  @mixin mobile-body-small {
+    font-family: ‘titillium’;
+    font-size: .6875rem;
+    line-height: 1rem;
     font-weight: $font-weight-regular;
   }
 
 //   / Padding Mixins for Mobile
-@mixin mobile-padding-headlines {
+@mixin padding-headlines {
   padding-top: 1.5rem;
-  padding-bottom: 1rem;
+  padding-bottom: 1.5rem;
 }
 
-@mixin mobile-padding-bottom-components {
+@mixin padding-above-paragraph {
+  padding-top: .25rem;
+  
+}
+
+@mixin padding-bottom-components {
   padding-bottom: 1rem;
 }
 // Text Style Mixins for Desktop & Tablet
 @mixin desktop-header-text {
-  font-size: 2.0625rem;
-  line-height: 2.75rem;
+  font-size: 2rem;
+  line-height: 2.5rem;
   font-weight: $font-weight-bold;
 }
-@mixin desktop-section-header-text {
-  font-size: .75rem;
-  line-height: 1.25rem;
+@mixin desktop-sub-header-text {
+  font-size: 1.5rem;
+  line-height: 2rem;
   font-weight: $font-weight-bold;
 }
-@mixin desktop-subheader-text {
+@mixin desktop-labels-links {
   font-size: .875rem;
   line-height: 1.375rem;
   font-weight: $font-weight-bold;
@@ -68,12 +91,23 @@
   line-height: 1.375rem;
   font-weight: $font-weight-regular;
 }
-
-// Padding Mixins for Desktop/Tablet
-@mixin desktop-padding-headlines {
-  padding-top: 2.25rem;
-  padding-bottom: 1.5rem;
+@mixin desktop-table-header {
+  font-size: .75rem;
+  line-height: 1.125rem;
+  font-weight: $font-weight-regular;
 }
-@mixin desktop-padding-bottom-components {
-  padding-bottom: 1.5rem;
+@mixin desktop-body-large {
+  font-size: 1rem;
+  line-height: 1.75rem;
+  font-weight: $font-weight-regular;
+}
+@mixin desktop-body-medium {
+  font-size: .875rem;
+  line-height: 1.375rem;
+  font-weight: $font-weight-regular;
+}
+@mixin desktop-body-small {
+  font-size: .75rem;
+  line-height: 1.125rem;
+  font-weight: $font-weight-regular;
 }
