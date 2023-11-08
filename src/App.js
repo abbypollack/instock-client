@@ -4,13 +4,12 @@ import './App.scss';
 // import EditInventoryItem from './pages/EditInventoryItem/EditInventoryItem';
 // import EditWarehouse from './pages/EditWarehouse/EditWarehouse';
 // import InventoryItemDetails from './pages/InventoryItemDetails/InventoryItemDetails';
-// import InventoryPage from './pages/InventoryPage/InventoryPage';
-import WarehouseDetailsPage from './pages/WarehouseDetailsPage/WarehouseDetailsPage.js';
+import InventoryPage from './pages/InventoryPage/InventoryPage';
+import WarehouseDetailsPage from './pages/WarehouseDetailsPage/WarehouseDetailsPage';
 // import WarehousePage from './pages/WarehousePage/WarehousePage';
-import Header from './components/Header/Header.js';
+import Header from './components/Header/Header';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Footer from './components/Footer/Footer.js';
-import InventoryPage from "./pages/InventoryPage/InventoryPage.js";
+import Footer from './components/Footer/Footer';
 
 
 function App() {

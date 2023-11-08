@@ -2,17 +2,17 @@ $font-weight-regular: 400;
 $font-weight-bold: 700;
 // Colors
 $primary-black: #13182c; // Primary text color.
-$primary-blue: #2e66e5; // Primary CTA color. Active form field outline color.
-$primary-white: #FFFFFF; // Seconday text color. Text Label color.
+$primary-blue: #2e66e5; // interactive elements.
+$primary-white: #FFFFFF; // global white color
 
-$secondary-slate: #5c667e; // Video player components.
-$secondary-cloud: #bdc5d5; // CTA hover state color.
+$secondary-slate: #5c667e; // table column headers & placeholder text
+$secondary-cloud: #bdc5d5; // outlines, dividers, borders, table sorting icon
 
-$background-graphite: #232940; // Divider line. Form field outline color.
-$background-light-grey: #f7f8f9; // Form field background color.
+$background-graphite: #232940; // top navigation header background, cta button hover state background
+$background-light-grey: #f7f8f9; // page background, table column header background, cta background
 
-$supporting-green: #158463;
-$supporting-red: #c94515;
+$supporting-green: #158463; //in stock label
+$supporting-red: #c94515; //out of stock label, error states & delete icon
 // Padding
 $mobile-padding-left-right: 0 1rem;
 $tablet-padding-left-right: 0 2.25rem;
