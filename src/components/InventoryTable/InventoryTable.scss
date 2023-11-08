@@ -1,0 +1,26 @@
+@use '../../styles/partials/variables' as *;
+
+.table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1.25rem;
+    width: 100%;
+    &__inventory {
+        border-collapse: collapse;
+    }
+}
+
+th, td {
+    text-align: left;
+    padding: 1rem 1.5rem;
+}
+td {
+    border-bottom: 1px solid #ccc;
+    text-transform: capitalize;
+}
+th {
+    font-size: .8rem;
+    background-color: #f2f2f2;
+    text-transform: uppercase;
+}
