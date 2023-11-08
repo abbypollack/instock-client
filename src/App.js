@@ -17,6 +17,14 @@ function App() {
         <BrowserRouter>
             {/* <Header /> */}
             <Routes>
+            <Route path="" element={<WarehousePage />} />
+            <Route path="" element={<WarehouseDetails />} />
+            <Route path="" element={<InventoryPage/>} />
+            <Route path="" element={<InventoryItemDetails />} />
+            <Route path="" element={<EditWarehouse />} />
+            <Route path="" element={<EditInventoryItem/>} />
+            <Route path="" element={<AddNewWarehouse />} />
+            <Route path="" element={<AddInventoryItem />} />
             </Routes>
             <Footer />
         </BrowserRouter>
