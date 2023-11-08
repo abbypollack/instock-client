@@ -16,7 +16,7 @@ import InventoryPage from "./pages/InventoryPage/InventoryPage.js";
 function App() {
     return (
         <BrowserRouter>
-            {/* <Header /> */}
+            <Header />
             <Routes>
                 {/* <Route path="" element={<WarehousePage />} /> */}
                 {/* <Route path="" element={<WarehouseDetails />} /> */}
