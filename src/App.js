@@ -4,7 +4,7 @@ import AddInventoryItem from './pages/AddInventoryItem/AddInventoryItem';
 // import EditInventoryItem from './pages/EditInventoryItem/EditInventoryItem';
 // import EditWarehouse from './pages/EditWarehouse/EditWarehouse';
 // import InventoryItemDetails from './pages/InventoryItemDetails/InventoryItemDetails';
-import WarehouseDetailsPage from './pages/WarehouseDetailsPage/WarehouseDetailsPage';
+import WarehouseDetailsPage from './pages/WarehouseDetailsPage/WarehouseDetailsPage.js';
 // import WarehousePage from './pages/WarehousePage/WarehousePage';
 import Header from './components/Header/Header';
 import { BrowserRouter, Routes, Route } from "react-router-dom";

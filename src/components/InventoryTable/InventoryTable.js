@@ -4,7 +4,8 @@ import edit from '../../assets/icons/edit-24px.svg'
 import sort from '../../assets/icons/sort-24px.svg'
 import chevron from '../../assets/icons/chevron_right-24px.svg'
 
-function InventoryTable({inventory}) {
+function InventoryTable({inventories, warehouses}) {
+    console.log(warehouses)
     return (
         <div className="table">
             <table className="table__inventory">
@@ -17,16 +18,15 @@ function InventoryTable({inventory}) {
                         <th>Warehouse<img src={sort} alt="sort" /></th>
                         <th>Actions<img src={sort} alt="sort" /></th>
                     </tr>
-                    
                 </thead>
                 <tbody>
-                        {inventory.map((item) => (
-                            <tr key={item.id}>
-                                <td>{item.item_name}<img src={chevron} alt="chevron"/></td>
-                                <td>{item.category}</td>
-                                <td>{item.status}</td>
-                                <td>{item.quantity}</td>
-                                <td>{item.warehouse_id}</td>
+                        {inventories.map((inventory) => (
+                            <tr key={inventory.id}>
+                                <td>{inventory.item_name}<img src={chevron} alt="chevron"/></td>
+                                <td>{inventory.category}</td>
+                                <td>{inventory.status}</td>
+                                <td>{inventory.quantity}</td>
+                                <td>{warehouses.find((warehouse) => warehouse.id === inventory.warehouse_id)?.warehouse_name || inventory.warehouse_name}</td>
                                 <td>
                                     <img src={deleted} alt="deleted" />
                                     <img src={edit} alt="edit" />
