@@ -1,0 +1,44 @@
+@use '../../styles/partials/_globals.scss' as *;
+@use '../../styles/partials/_mixins.scss' as *;
+@use '../../styles/partials/_typography.scss' as *;
+@use '../../styles/partials/_variables.scss' as *;
+
+.warehouse-inventory {
+    background-color: $primary-white;
+    &__title {
+        @include mobile-header-text;
+        @include padding-headlines;
+        @include tablet {
+            @include tablet-header-text;
+        }
+        &-container {
+            @include divider;
+            display: flex;
+            padding: $mobile-padding-left-right;
+            @include tablet {
+                padding: $tablet-padding-left-right;
+            }
+            @include desktop {
+                padding: $desktop-padding-left-right;
+            }
+        }
+        &-icon {
+            margin: 2rem 1rem 0 0;
+        }
+    }
+    &__subheader * h3 {
+        @include mobile-table-header;
+        @include padding-headlines;
+        text-transform: uppercase;
+        @include tablet {
+            @include tablet-subheader-text;
+        }
+    }
+    &__subheader--contact{
+        display: flex;
+        justify-content: space-around;
+        @include padding-bottom-components;
+        @include divider;
+
+    }
+}
