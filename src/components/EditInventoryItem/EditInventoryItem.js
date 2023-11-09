@@ -30,28 +30,22 @@ function EditInventoryItemComponent({ itemId }) {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData((prevFormData) => ({
+        setFormData(prevFormData => ({
             ...prevFormData,
             [name]: value,
+            ...(name === 'status' && value === 'out of stock' && { quantity: '' })
         }));
-
-        if (name === 'status' && value === 'out of stock') {
-            setFormData((prevFormData) => ({
-                ...prevFormData,
-                quantity: '',
-            }));
-        }
-
         if (errors[name]) {
-            setErrors((prevErrors) => ({
+            setErrors(prevErrors => ({
                 ...prevErrors,
-                [name]: '',
+                [name]: ''
             }));
         }
     };
+    
 
     function handleCancel() {
-        window.history.back();
+        navigate(-1);
     }
 
 
@@ -75,20 +69,18 @@ function EditInventoryItemComponent({ itemId }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+    
         if (!validateForm()) return;
-
-        const warehouseId = parseInt(formData.warehouse, 10);
-
+    
         const payload = {
-            warehouse_id: warehouseId,
+            warehouse_id: formData.warehouse, 
             item_name: formData.itemName,
             description: formData.description,
             category: formData.category,
             status: formData.status,
-            quantity: parseInt(formData.quantity, 10)
+            quantity: formData.status === 'in stock' ? formData.quantity : 0
         };
-
+    
         try {
             await axios.put(`/api/inventories/${itemId}`, payload);
             navigate('/inventory');
@@ -97,6 +89,7 @@ function EditInventoryItemComponent({ itemId }) {
             alert(`There was an error updating the inventory item: ${errorMessage}`);
         }
     };
+    
 
     return (
         <section className="edit-inventory-item">
