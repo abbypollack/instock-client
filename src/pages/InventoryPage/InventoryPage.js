@@ -5,21 +5,27 @@ import { API_URL } from '../../utils';
 
 function InventoryPage() {
     const [inventory, setInventory] = useState([]);
+    const [warehouse, setWarehouse] = useState([]);
 
         useEffect(() => {
                 async function getInventory() {
                     const response = await axios.get(`${API_URL}/api/inventories`);
                     setInventory(response.data);
-                    console.log(response.data);
                 } getInventory();
             }, []);
+        useEffect(() => {
+            async function getWarehouses() {
+                const response = await axios.get(`${API_URL}/api/warehouses`);
+                setWarehouse(response.data);
+            } getWarehouses();
+        }, []);
 
     return (
         <div>
             <h1>Inventory</h1>
             {/* <SearchBar />
             <AddButton text={Item}/> */}
-            <InventoryTable inventory={inventory}/>
+            <InventoryTable inventories={inventory} warehouses={warehouse}/>
         </div>
     )
 }
