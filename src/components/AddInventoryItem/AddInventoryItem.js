@@ -51,7 +51,6 @@ function AddInventoryItemComponent() {
         }
     };
 
-
     function handleCancel() {
         navigate(-1);
     }
