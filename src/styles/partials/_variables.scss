@@ -1,19 +1,21 @@
 $font-weight-regular: 400;
-$font-weight-bold: 700;
+$font-weight-semi-bold: 600;
+
 // Colors
-$primary-black: #13182c; // Primary text color.
-$primary-blue: #2e66e5; // interactive elements.
-$primary-white: #FFFFFF; // global white color
+$primary-black: #13182c;
+$primary-blue: #2e66e5; 
+$primary-white: #FFFFFF; 
 
-$secondary-slate: #5c667e; // table column headers & placeholder text
-$secondary-cloud: #bdc5d5; // outlines, dividers, borders, table sorting icon
+$secondary-slate: #5c667e; 
+$secondary-cloud: #bdc5d5; 
 
-$background-graphite: #232940; // top navigation header background, cta button hover state background
-$background-light-grey: #f7f8f9; // page background, table column header background, cta background
+$background-graphite: #232940; 
+$background-light-grey: #f7f8f9; 
 
-$supporting-green: #158463; //in stock label
-$supporting-red: #c94515; //out of stock label, error states & delete icon
+$supporting-green: #158463;
+$supporting-red: #c94515;
+
 // Padding
 $mobile-padding-left-right: 0 1rem;
-$tablet-padding-left-right: 0 2.25rem;
+$tablet-padding-left-right: 0 2rem;
 $desktop-padding-left-right: 0 auto;
