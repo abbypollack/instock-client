@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+
 import axios from 'axios';
+import arrowBackIcon from '../../assets/icons/arrow_back-24px.svg';
 import './EditInventoryItem.scss';
 
 function EditInventoryItemComponent({ itemId }) {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         itemName: '',
         description: '',
         category: '',
         status: 'in stock',
-        quantity: 0,
+        quantity: 1,
         warehouse: '',
     });
     const [errors, setErrors] = useState({});
@@ -16,11 +20,10 @@ function EditInventoryItemComponent({ itemId }) {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        // TODO: Fetch the item data from the API & populate the form
-        // TODO: Fetch the list of warehouses from the API
+        // TODO: Fetch the item data from the API & populate the form + fetch the list of warehouses from the API
         // setWarehouses(response.data);
 
-        // TODO: Fetch the list of categories from the API
+        // Fetch the list of categories from the API
         // setCategories(response.data);
 
     }, [itemId]);
@@ -72,23 +75,40 @@ function EditInventoryItemComponent({ itemId }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         if (!validateForm()) return;
 
+        const warehouseId = parseInt(formData.warehouse, 10);
+
+        const payload = {
+            warehouse_id: warehouseId,
+            item_name: formData.itemName,
+            description: formData.description,
+            category: formData.category,
+            status: formData.status,
+            quantity: parseInt(formData.quantity, 10)
+        };
+
         try {
-            const response = await axios.put(`/api/inventory/${itemId}`, formData);
-            console.log(response.data);
-            // TODO: Handle the success scenario (redirect to the inventory list / success message)
+            await axios.put(`/api/inventories/${itemId}`, payload);
+            navigate('/inventory');
         } catch (error) {
-            console.error("There was an error updating the inventory item:", error.response || error);
-            // TODO: Handle the error scenario
+            const errorMessage = error.response ? error.response.data.error : error.message;
+            alert(`There was an error updating the inventory item: ${errorMessage}`);
         }
     };
 
     return (
         <section className="edit-inventory-item">
+            <div className="edit-inventory-item__title-container">
+                <Link to="/inventory">
+                    <img className="edit-inventory-item__title-icon" src={arrowBackIcon} alt="arrow back icon" />
+                </Link>
+                <h1 className="edit-inventory-item__title">Edit Inventory Item</h1>
+            </div>
             <form className="edit-inventory-item__form" onSubmit={handleSubmit} noValidate>
                 <div className="edit-inventory-item__details">
-                    <h2 className="edit-inventory-item__title">Item Details</h2>
+                    <h2 className="edit-inventory-item__subheader">Item Details</h2>
                     <label className="edit-inventory-item__label" htmlFor="itemName">Item Name</label>
                     <input
                         className="edit-inventory-item__input"
@@ -128,7 +148,7 @@ function EditInventoryItemComponent({ itemId }) {
                     {errors.category && <p className="edit-inventory-item__error">{errors.category}</p>}
                 </div>
                 <div className="edit-inventory-item__availability">
-                    <h2 className="edit-inventory-item__title">Item Availability</h2>
+                    <h2 className="edit-inventory-item__subheader">Item Availability</h2>
                     <div className="edit-inventory-item__stock">
                         <h4 className="edit-inventory-item__label">Status</h4>
                         <div className="edit-inventory-item__radios">

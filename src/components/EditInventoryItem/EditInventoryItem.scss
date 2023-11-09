@@ -5,21 +5,39 @@
 
 .edit-inventory-item {
     background-color: $primary-white;
-    padding: $mobile-padding-left-right;
 
-    @include tablet {
-        padding: $tablet-padding-left-right;
-    }
+    &__title {
+        @include mobile-header-text;
+        @include padding-headlines;
 
-    @include desktop {
-        padding: $desktop-padding-left-right;
+        @include tablet {
+            @include tablet-header-text;
+        }
+
+        &-container {
+            @include divider;
+            display: flex;
+            padding: $mobile-padding-left-right;
+
+            @include tablet {
+                padding: $tablet-padding-left-right;
+            }
+
+            @include desktop {
+                padding: $desktop-padding-left-right;
+            }
+        }
+
+        &-icon {
+            margin: 2rem 1rem 0 0;
+        }
     }
 
     &__form {
         @include tablet {
             display: flex;
             justify-content: space-between;
-            padding-bottom: 30px;
+            padding-bottom: 1.875rem;
         }
     }
 
@@ -27,21 +45,23 @@
         display: flex;
         margin-bottom: .5rem;
     }
-    &__radio{
-        &-text{
+
+    &__radio {
+        &-text {
             @include spacing-radio-button;
             @include mobile-body-medium-text;
 
-            @include tablet{
+            @include tablet {
                 @include tablet-body-medium-text;
             }
         }
     }
-    &__radio:not(:checked) + .edit-inventory-item__radio-text {
-        color: $secondary-slate; 
-      }
 
-    &__title {
+    &__radio:not(:checked)+.edit-inventory-item__radio-text {
+        color: $secondary-slate;
+    }
+
+    &__subheader {
         @include mobile-subheader-text;
         @include padding-headlines;
 
@@ -67,7 +87,7 @@
     &__details {
         border-bottom: $secondary-cloud 1px solid;
         @include divider;
-        @include padding-bottom-components;
+        padding: 0 1rem 1rem 1rem;
 
         @include tablet {
             border-bottom: none;
@@ -76,25 +96,40 @@
             border-right: $secondary-cloud 1px solid;
             padding-right: 3.125rem;
             flex-direction: column;
+            padding: 0 2rem 1rem 2em;
+        }
+
+        @include desktop {
+            padding: 0 auto 1rem auto;
         }
     }
 
     &__availability {
-        @include padding-bottom-components;
+        padding: 0 1rem 1rem 1rem;
+
+        @include tablet {
+            padding: $tablet-padding-left-right;
+        }
 
         @include tablet {
             display: flex;
+            padding: 0 2rem 1rem 2em;
             width: 48%;
             flex-direction: column;
         }
+
+        @include desktop {
+            padding: 0 auto 1rem auto;
+        }
+
     }
 
-    &__input{
+    &__input {
         @include form-field;
         margin: .5rem 0;
 
-        &--quantity{
-            @include desktop{
+        &--quantity {
+            @include desktop {
                 width: 25%;
             }
         }
@@ -106,16 +141,16 @@
         height: 7.5rem;
 
     }
-    &__select{
+
+    &__select {
         @include form-field;
         margin: .5rem 0;
 
         appearance: none;
         -webkit-appearance: none;
         -moz-appearance: none;
-        background: transparent;
 
-        background-image: url('../../assets/icons/arrow_drop_down-24px.svg'); 
+        background-image: url('../../assets/icons/arrow_drop_down-24px.svg');
         background-repeat: no-repeat;
         background-position: calc(100% - 1.25rem) center;
     }
@@ -125,16 +160,21 @@
         align-items: center;
         background-color: $background-light-grey;
         height: 4.25rem;
+        padding: $mobile-padding-left-right;
 
-        @include tablet{
+        @include tablet {
             justify-content: flex-end;
+            padding: $tablet-padding-left-right;
+        }
+        @include desktop {
+            padding: $desktop-padding-left-right;
         }
     }
 
     &__button {
         @include cta-button;
 
-        @include tablet{
+        @include tablet {
             width: 10vw;
         }
 

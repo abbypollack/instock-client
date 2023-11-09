@@ -1,8 +1,9 @@
 import EditInventoryItemComponent from '../../components/EditInventoryItem/EditInventoryItem';
+import './EditInventoryItem.scss';
 
 function EditInventoryItemPage() {
   return (
-    <section>
+    <section className="edit-inventory-item-section">
       <EditInventoryItemComponent />
     </section>
   );
