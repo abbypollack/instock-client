@@ -1,8 +1,2 @@
 @use './styles/partials/_mixins.scss' as *;
 @use "./styles/partials/_variables.scss" as *;
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
