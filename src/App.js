@@ -1,12 +1,12 @@
 import './App.scss';
-import AddInventoryItemPage from './pages/AddInventoryItem/AddInventoryItem';
-import AddNewWarehouse from './pages/AddNewWarehouse/AddNewWarehouse';
-import EditInventoryItem from './pages/EditInventoryItem/EditInventoryItem';
-import EditWarehouse from './pages/EditWarehouse/EditWarehouse';
-import InventoryItemDetails from './pages/InventoryItemDetails/InventoryItemDetails';
-import WarehouseDetails from './pages/WarehouseDetails/WarehouseDetails';
-import WarehousePage from './pages/WarehousePage/WarehousePage';
-// import Header from './components/Header/Header.js';
+// import AddInventoryItem from './pages/AddInventoryItem/AddInventoryItem';
+// import AddNewWarehouse from './pages/AddNewWarehouse/AddNewWarehouse';
+// import EditInventoryItem from './pages/EditInventoryItem/EditInventoryItem';
+// import EditWarehouse from './pages/EditWarehouse/EditWarehouse';
+// import InventoryItemDetails from './pages/InventoryItemDetails/InventoryItemDetails';
+import WarehouseDetailsPage from './pages/WarehouseDetailsPage/WarehouseDetailsPage';
+// import WarehousePage from './pages/WarehousePage/WarehousePage';
+import Header from './components/Header/Header';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer.js';
@@ -20,6 +20,7 @@ function App() {
             <Header />
             <Routes>
                 {/* <Route path="" element={<WarehousePage />} /> */}
+                <Route path="/warehouse/details" element={<WarehouseDetailsPage />} />
                 {/* <Route path="" element={<WarehouseDetails />} /> */}
                 <Route path="/inventory" element={<InventoryPage/>} />
                 {/* <Route path="" element={<InventoryItemDetails />} /> */}
