@@ -1,5 +1,5 @@
 import './App.scss';
-// import AddInventoryItem from './pages/AddInventoryItem/AddInventoryItem';
+import AddInventoryItem from './pages/AddInventoryItem/AddInventoryItem';
 // import AddNewWarehouse from './pages/AddNewWarehouse/AddNewWarehouse';
 // import EditInventoryItem from './pages/EditInventoryItem/EditInventoryItem';
 // import EditWarehouse from './pages/EditWarehouse/EditWarehouse';
@@ -8,7 +8,6 @@ import WarehouseDetailsPage from './pages/WarehouseDetailsPage/WarehouseDetailsP
 // import WarehousePage from './pages/WarehousePage/WarehousePage';
 import Header from './components/Header/Header';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer.js';
 import InventoryPage from "./pages/InventoryPage/InventoryPage.js";
 import EditInventoryItemPage from "./pages/EditInventoryItem/EditInventoryItem";
@@ -27,7 +26,7 @@ function App() {
                 {/* <Route path="" element={<EditWarehouse />} /> */}
                 <Route path="/inventory/edit" element={<EditInventoryItemPage/>} />
                 {/* <Route path="" element={<AddNewWarehouse />} /> */}
-                <Route path="/inventory/add" element={<AddInventoryItemPage />} />
+                <Route path="/inventory/add" element={<AddInventoryItem />} />
                 </Routes>
             <Footer />
         </BrowserRouter> 
