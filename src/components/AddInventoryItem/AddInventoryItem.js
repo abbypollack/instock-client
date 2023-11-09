@@ -79,7 +79,7 @@ function AddInventoryItemComponent() {
         };
 
         try {
-            const response = await axios.post('api/inventories', payload);
+            const response = await axios.post('/api/inventories', payload);
             navigate('inventory');
         } catch (error) {
             const errorMessage = error.response ? error.response.data.error : error.message;
@@ -199,7 +199,7 @@ function AddInventoryItemComponent() {
             </form>
             <div className="add-inventory-item__buttons">
                 <button className="add-inventory-item__button add-inventory-item__button--cancel" type="button" onClick={handleCancel}>Cancel</button>
-                <button className="add-inventory-item__button add-inventory-item__button--submit" type="submit">Add Item</button>
+                <button className="add-inventory-item__button add-inventory-item__button--submit" type="submit">+ Add Item</button>
             </div>
         </section>
     );
