@@ -27,13 +27,13 @@
         display: flex;
         list-style: none;
         padding: 1.25rem;
-        @include mobile-body-medium-text;
+        @include mobile-body-text;
         @include tablet{
             padding-right: 2rem;
         }
         @include desktop{
             padding-right: 4rem;
-            @include tablet-body-medium-text;
+            @include desktop-body-text;
         }
 
         :active{
