@@ -21,33 +21,33 @@ function InventoryTable() {
                 <tbody>
                     <tr>
                         {/* map function to cycle thru future JSX items */}
-                        <td>'item'<img src={chevron} alt="chevron"/></td>
+                        <td>'item'<img src={chevron} alt="chevron" /></td>
                         <td>'category'</td>
                         <td>'status'</td>
                         <td>'quantity'</td>
                         <td>'warehouse_id'</td>
                         <td><img src={deleted} alt="arrow2" />
-                        <img src={edit} alt="arrow" /></td>
+                            <img src={edit} alt="arrow" /></td>
                     </tr>
                     <tr>
                         {/* to be deleted after map function is implemented */}
-                        <td>'item'<img src={chevron} alt="chevron"/></td>
+                        <td>'item'<img src={chevron} alt="chevron" /></td>
                         <td>'category'</td>
                         <td>'status'</td>
                         <td>'quantity'</td>
                         <td>'warehouse_id'</td>
                         <td><img src={deleted} alt="arrow2" />
-                        <img src={edit} alt="arrow" /></td>
+                            <img src={edit} alt="arrow" /></td>
                     </tr>
                     <tr>
                         {/* to be deleted after map function is implemented */}
-                        <td>'item'<img src={chevron} alt="chevron"/></td>
+                        <td>'item'<img src={chevron} alt="chevron" /></td>
                         <td>'category'</td>
                         <td>'status'</td>
                         <td>'quantity'</td>
                         <td>'warehouse_id'</td>
                         <td><img src={deleted} alt="arrow2" />
-                        <img src={edit} alt="arrow" /></td>
+                            <img src={edit} alt="arrow" /></td>
                     </tr>
                 </tbody>
             </table>

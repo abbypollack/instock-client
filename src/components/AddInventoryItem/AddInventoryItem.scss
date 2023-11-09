@@ -33,6 +33,10 @@
         }
     }
 
+    &__error{
+        color: $supporting-red;
+    }
+    
     &__form {
         @include tablet {
             display: flex;
