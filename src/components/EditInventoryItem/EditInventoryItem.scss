@@ -33,6 +33,10 @@
         }
     }
 
+    &__error {
+        color: $supporting-red;
+    }
+
     &__form {
         @include tablet {
             display: flex;
@@ -138,8 +142,7 @@
     &__textarea {
         @include form-field;
         margin: .5rem 0;
-        height: 7.5rem;
-
+        height: 7.5rem !important;
     }
 
     &__select {
@@ -166,6 +169,7 @@
             justify-content: flex-end;
             padding: $tablet-padding-left-right;
         }
+
         @include desktop {
             padding: $desktop-padding-left-right;
         }
@@ -175,7 +179,7 @@
         @include cta-button;
 
         @include tablet {
-            width: 10vw;
+            width: 12vw;
         }
 
         &--submit {
