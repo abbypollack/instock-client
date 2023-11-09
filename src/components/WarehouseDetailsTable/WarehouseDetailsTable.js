@@ -4,6 +4,8 @@ import sort from '../../assets/icons/sort-24px.svg'
 import chevron from '../../assets/icons/chevron_right-24px.svg'
 
 function WarehouseDetailsTable() {
+
+    // add functionality after Jorge completes warehouse page
     return (
         <div className="table">
             <table className="table__inventory">

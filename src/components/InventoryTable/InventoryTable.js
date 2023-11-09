@@ -4,7 +4,7 @@ import edit from '../../assets/icons/edit-24px.svg'
 import sort from '../../assets/icons/sort-24px.svg'
 import chevron from '../../assets/icons/chevron_right-24px.svg'
 
-function InventoryTable() {
+function InventoryTable({inventory}) {
     return (
         <div className="table">
             <table className="table__inventory">
@@ -17,38 +17,23 @@ function InventoryTable() {
                         <th>Warehouse<img src={sort} alt="sort" /></th>
                         <th>Actions<img src={sort} alt="sort" /></th>
                     </tr>
+                    
                 </thead>
                 <tbody>
-                    <tr>
-                        {/* map function to cycle thru future JSX items */}
-                        <td>'item'<img src={chevron} alt="chevron"/></td>
-                        <td>'category'</td>
-                        <td>'status'</td>
-                        <td>'quantity'</td>
-                        <td>'warehouse_id'</td>
-                        <td><img src={deleted} alt="deleted" />
-                        <img src={edit} alt="edit" /></td>
-                    </tr>
-                    <tr>
-                        {/* to be deleted after map function is implemented */}
-                        <td>'item'<img src={chevron} alt="chevron"/></td>
-                        <td>'category'</td>
-                        <td>'status'</td>
-                        <td>'quantity'</td>
-                        <td>'warehouse_id'</td>
-                        <td><img src={deleted} alt="deleted" />
-                        <img src={edit} alt="edit" /></td>
-                    </tr>
-                    <tr>
-                        {/* to be deleted after map function is implemented */}
-                        <td>'item'<img src={chevron} alt="chevron"/></td>
-                        <td>'category'</td>
-                        <td>'status'</td>
-                        <td>'quantity'</td>
-                        <td>'warehouse_id'</td>
-                        <td><img src={deleted} alt="deleted" />
-                        <img src={edit} alt="edit" /></td>
-                    </tr>
+                        {inventory.map((item) => (
+                            <tr key={item.id}>
+                                <td>{item.item_name}<img src={chevron} alt="chevron"/></td>
+                                <td>{item.category}</td>
+                                <td>{item.status}</td>
+                                <td>{item.quantity}</td>
+                                <td>{item.warehouse_id}</td>
+                                <td>
+                                    <img src={deleted} alt="deleted" />
+                                    <img src={edit} alt="edit" />
+                                </td>
+                            </tr>
+                        ))}
+                    
                 </tbody>
             </table>
         </div>
