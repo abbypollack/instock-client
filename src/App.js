@@ -1,12 +1,12 @@
 import './App.scss';
 import AddInventoryItem from './pages/AddInventoryItem/AddInventoryItem';
-import AddNewWarehouse from './pages/AddNewWarehouse/AddNewWarehouse';
-import EditInventoryItem from './pages/EditInventoryItem/EditInventoryItem';
-import EditWarehouse from './pages/EditWarehouse/EditWarehouse';
-import InventoryItemDetails from './pages/InventoryItemDetails/InventoryItemDetails';
-import WarehouseDetails from './pages/WarehouseDetails/WarehouseDetails';
-import WarehousePage from './pages/WarehousePage/WarehousePage';
-import Header from './components/Header/Header.js';
+// import AddNewWarehouse from './pages/AddNewWarehouse/AddNewWarehouse';
+// import EditInventoryItem from './pages/EditInventoryItem/EditInventoryItem';
+// import EditWarehouse from './pages/EditWarehouse/EditWarehouse';
+// import InventoryItemDetails from './pages/InventoryItemDetails/InventoryItemDetails';
+import WarehouseDetailsPage from './pages/WarehouseDetailsPage/WarehouseDetailsPage';
+// import WarehousePage from './pages/WarehousePage/WarehousePage';
+import Header from './components/Header/Header';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from './components/Footer/Footer.js';
 import InventoryPage from "./pages/InventoryPage/InventoryPage.js";
@@ -19,13 +19,14 @@ function App() {
             <Header />
             <Routes>
                 <Route path="/warehouses" element={<WarehousePage />} />
+                <Route path="/warehouse/details" element={<WarehouseDetailsPage />} />
                 <Route path="/warehouses" element={<WarehouseDetails />} />
                 <Route path="/inventory" element={<InventoryPage/>} />
                 {/* <Route path="" element={<InventoryItemDetails />} /> */}
                 {/* <Route path="" element={<EditWarehouse />} /> */}
                 <Route path="/inventory/edit" element={<EditInventoryItemPage/>} />
                 <Route path="/warehouses/add" element={<AddNewWarehouse />} />
-                {/* <Route path="" element={<AddInventoryItem />} /> */}
+                <Route path="/inventory/add" element={<AddInventoryItem />} />
                 </Routes>
             <Footer />
         </BrowserRouter> 

@@ -7,25 +7,33 @@ import './EditInventoryItem.scss';
 
 function EditInventoryItemComponent({ itemId }) {
     const navigate = useNavigate();
-    const [formData, setFormData] = useState({
-        itemName: '',
-        description: '',
-        category: '',
-        status: 'in stock',
-        quantity: 1,
-        warehouse: '',
-    });
+    const [formData, setFormData] = useState({ itemName: '', description: '', category: '', status: 'in stock', quantity: 1, warehouse: '', });
     const [errors, setErrors] = useState({});
     const [warehouses, setWarehouses] = useState([]);
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        // TODO: Fetch the item data from the API & populate the form + fetch the list of warehouses from the API
-        // setWarehouses(response.data);
+        const fetchWarehouses = async () => {
+            try {
+                const response = await axios.get('http://localhost:8081/api/warehouses/');
+                setWarehouses(response.data);
+            } catch (error) {
+                console.error('Error fetching warehouses:', error);
+            }
+        };
 
-        // Fetch the list of categories from the API
-        // setCategories(response.data);
+        const fetchCategories = async () => {
+            try {
+                const response = await axios.get('http://localhost:8081/api/inventories/');
+                const uniqueCategories = Array.from(new Set(response.data.map(item => item.category)));
+                setCategories(uniqueCategories);
+            } catch (error) {
+                console.error('Error fetching categories:', error);
+            }
+        };
 
+        fetchWarehouses();
+        fetchCategories();
     }, [itemId]);
 
     const handleChange = (e) => {
@@ -42,7 +50,7 @@ function EditInventoryItemComponent({ itemId }) {
             }));
         }
     };
-    
+
 
     function handleCancel() {
         navigate(-1);
@@ -57,7 +65,18 @@ function EditInventoryItemComponent({ itemId }) {
             isValid = false;
             newErrors.itemName = 'Item name is required.';
         }
-
+        if (!formData.description.trim()) {
+            isValid = false;
+            newErrors.description = 'Description is required.';
+        }
+        if (!formData.category) {
+            isValid = false;
+            newErrors.category = 'Please select a category.';
+        }
+        if (!formData.warehouse_id) {
+            isValid = false;
+            newErrors.warehouse_id = 'Please select a warehouse.';
+        }
         if (formData.status === 'in stock' && (!formData.quantity || formData.quantity <= 0)) {
             isValid = false;
             newErrors.quantity = 'Quantity must be greater than 0.';
@@ -69,27 +88,28 @@ function EditInventoryItemComponent({ itemId }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
+
         if (!validateForm()) return;
-    
+
         const payload = {
-            warehouse_id: formData.warehouse, 
+            warehouse_id: formData.warehouse,
             item_name: formData.itemName,
             description: formData.description,
             category: formData.category,
             status: formData.status,
             quantity: formData.status === 'in stock' ? formData.quantity : 0
         };
-    
+
         try {
-            await axios.put(`/api/inventories/${itemId}`, payload);
+            const response = await axios.put(`http://localhost:8081/api/inventories/${itemId}`, payload);
+            localStorage.setItem('recentInventoryChange', JSON.stringify(response.data));
             navigate('/inventory');
         } catch (error) {
             const errorMessage = error.response ? error.response.data.error : error.message;
             alert(`There was an error updating the inventory item: ${errorMessage}`);
         }
     };
-    
+
 
     return (
         <section className="edit-inventory-item">
@@ -197,13 +217,13 @@ function EditInventoryItemComponent({ itemId }) {
                             <option key={warehouse.id} value={warehouse.id}>{warehouse.warehouse_name}</option>
                         ))}
                     </select>
-                    {errors.warehouse && <p className="edit-inventory-item__error">{errors.warehouse}</p>}
+                    {errors.warehouse_id && <p className="edit-inventory-item__error">{errors.warehouse_id}</p>}
+                </div>
+                <div className="edit-inventory-item__buttons">
+                    <button className="edit-inventory-item__button edit-inventory-item__button--cancel" type="button" onClick={handleCancel}>Cancel</button>
+                    <button className="edit-inventory-item__button edit-inventory-item__button--submit" type="submit">Save</button>
                 </div>
             </form>
-            <div className="edit-inventory-item__buttons">
-                <button className="edit-inventory-item__button edit-inventory-item__button--cancel" type="button" onClick={handleCancel}>Cancel</button>
-                <button className="edit-inventory-item__button edit-inventory-item__button--submit" type="submit">Save</button>
-            </div>
         </section>
     );
 
