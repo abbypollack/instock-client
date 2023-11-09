@@ -138,8 +138,7 @@
     &__textarea {
         @include form-field;
         margin: .5rem 0;
-        height: 7.5rem;
-
+        height: 7.5rem !important;
     }
 
     &__select {
