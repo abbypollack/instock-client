@@ -144,20 +144,20 @@
 
 // Tags Mixins
 @mixin out-of-stock-tag {
-  height: 2.25rem;
+  height: 1.5rem;
   padding: 0 1rem;
   background: rgba(201,69,21, .07);
   border-radius: 20px;
   color: $supporting-red;
 
   @include tablet{
-    height: 2.375rem;
+    height: 1.625rem;
   }
 }
 
 @mixin in-stock-tag {
   @include out-of-stock-tag;
-  background: rgba(21,132,99);
+  background: rgba(21,132,99, .07);
   color: $supporting-green;
 }
 

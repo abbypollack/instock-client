@@ -5,6 +5,16 @@
 
 .inventory-item-details {
     background-color: $primary-white;
+    @include mobile-body-medium-text;
+    @include padding-bottom-components;
+
+    @include tablet {
+        @include tablet-body-medium-text;
+    }
+
+    &__item-container {
+        padding-top: 1rem;
+    }
 
     &__title {
         @include mobile-header-text;
@@ -13,10 +23,14 @@
         @include tablet {
             @include tablet-header-text;
         }
-
+        &-and-icon{
+            display: flex;
+        }
         &-container {
             @include divider;
             display: flex;
+            justify-content: space-between;
+            align-items: baseline;
             padding: $mobile-padding-left-right;
 
             @include tablet {
@@ -31,5 +45,63 @@
         &-icon {
             margin: 2rem 1rem 0 0;
         }
+    }
+
+    &__value {
+        padding-bottom: .5rem;
+
+        &--stock {
+            @include mobile-table-header;
+            @include in-stock-tag;
+            text-transform: uppercase;
+            border: none;
+        }
+    }
+
+    &__icon {
+        padding: .5rem;
+        &-container {
+            background-color: $primary-blue;
+            border-radius: 50%;
+            height: fit-content;
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    &__label {
+        @include mobile-table-header;
+        text-transform: uppercase;
+        color: $secondary-slate;
+        padding-bottom: .25rem;
+    }
+
+    &__description {
+        &-container {
+            padding: $mobile-padding-left-right;
+
+            @include tablet {
+                padding: $tablet-padding-left-right;
+            }
+
+            @include desktop {
+                padding: $desktop-padding-left-right;
+            }
+        }
+    }
+
+    &__stock {
+        display: flex;
+    }
+
+    &__quantity {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__status {
+        display: flex;
+        flex-direction: column;
+        margin-right: 30vw;
     }
 }

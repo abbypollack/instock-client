@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import arrowBackIcon from '../../assets/icons/arrow_back-24px.svg';
-import editIcon from '../../assets/icons/edit-24px.svg';
+import editIcon from '../../assets/icons/edit-white-24px.svg';
 import './InventoryItemDetails.scss';
 
 function InventoryItemDetailsComponent() {
@@ -36,32 +36,41 @@ function InventoryItemDetailsComponent() {
     if (error) return <div>Error: {error}</div>;
     if (!itemDetails) return <div>Item not found.</div>;
 
-
     return (
         <section className="inventory-item-details">
-            <div className="inventory-item-detail__title-container">
-                <Link to="/inventory">
-                    <img className="inventory-item-detail__title-icon" src={arrowBackIcon} alt="arrow back icon" />
-                </Link>
-                <h1 className="inventory-item-detail__title">{itemDetails?.item_name}</h1>
-                <img onClick={handleEdit} src={editIcon} alt="arrow back icon"></img>
-            </div>
-            <div className="inventory-item-detail__description-container">
-                <div className="inventory-item-detail__item-container">
-                    <span className="inventory-item-detail__label">Item description:</span>
-                    <p className="inventory-item-detail__value">{itemDetails?.description}</p>
-                    <span className="inventory-item-detail__label">Category:</span>
-                    <p className="inventory-item-detail__value">{itemDetails?.category}</p>
+            <div className="inventory-item-details__title-container">
+                <div className="inventory-item-details__title-and-icon">
+                    <Link to="/inventory">
+                        <img className="inventory-item-details__title-icon" src={arrowBackIcon} alt="arrow back icon" />
+                    </Link>
+                    <h1 className="inventory-item-details__title">{itemDetails?.item_name}</h1>
                 </div>
-                <div className="inventory-item-detail__info-container">
-                    <div className="inventory-item-detail__stock">
-                        <span className="inventory-item-detail__label">Status:</span>
-                        <p className="inventory-item-detail__value"></p>
-                        <span className="inventory-item-detail__label">Quantity:</span>
-                        <p className="inventory-item-detail__value">{itemDetails?.quantity}</p>
-                        <span className="inventory-item-detail__label">Warehouse:</span>
+                <div className="inventory-item-details__icon-container">
+                    <img className="inventory-item-details__icon" src={editIcon} alt="edit icon" onClick={handleEdit}></img>
+                </div>
+            </div>
+            <div className="inventory-item-details__description-container">
+                <div className="inventory-item-details__item-container">
+                    <span className="inventory-item-details__label">Item description:</span>
+                    <p className="inventory-item-details__value">{itemDetails?.description}</p>
+                    <span className="inventory-item-details__label">Category:</span>
+                    <p className="inventory-item-details__value">{itemDetails?.category}</p>
+                </div>
+                <div className="inventory-item-details__info-container">
+                    <div className="inventory-item-details__stock">
+                        <div className="inventory-item-details__status">
+                            <span className="inventory-item-details__label">Status:</span>
+                            <button disabled className="inventory-item-details__value inventory-item-details__value--stock">
+                                {itemDetails?.quantity > 0 ? 'In Stock' : 'Out of Stock'}
+                            </button >
+                        </div>
+                        <div className="inventory-item-details__quantity">
+                            <span className="inventory-item-details__label">Quantity:</span>
+                            <p className="inventory-item-details__value">{itemDetails?.quantity}</p>
+                        </div>
                     </div>
-                    <p className="inventory-item-detail__value">{itemDetails?.warehouse_id}</p>
+                    <span className="inventory-item-details__label">Warehouse:</span>
+                    <p className="inventory-item-details__value">{itemDetails?.warehouse_name}</p>
                 </div>
             </div>
         </section>
