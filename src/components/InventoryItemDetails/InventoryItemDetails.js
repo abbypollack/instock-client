@@ -7,24 +7,24 @@ import './InventoryItemDetails.scss';
 
 function InventoryItemDetailsComponent() {
     const [itemDetails, setItemDetails] = useState(null);
-    const { id } = useParams();
+    const { itemId } = useParams();
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchItemDetails = async () => {
             try {
-                const response = await axios.get(`http://localhost:8081/api/inventories/${id}`);
+                const response = await axios.get(`http://localhost:8081/api/inventories/${itemId}`);
                 setItemDetails(response.data);
             } catch (error) {
-                console.error('Error fetching item details:', error);
+                console.error(error);
             }
         };
 
         fetchItemDetails();
-    }, [id]);
+    }, [itemId]);
 
     const handleEdit = () => {
-        navigate(`/inventory/edit`);
+        navigate(`/inventory/edit/${itemId}`);
     }
 
     function handleCancel() {
@@ -38,8 +38,8 @@ function InventoryItemDetailsComponent() {
                     <img className="inventory-item-details__title-icon" onClick={handleCancel} src={arrowBackIcon} alt="arrow back icon" />
                     <h1 className="inventory-item-details__title">{itemDetails?.item_name}</h1>
                 </div>
-                <div className="inventory-item-details__icon-container">
-                    <img className="inventory-item-details__icon" src={editIcon} alt="edit icon" onClick={handleEdit}></img>
+                <div className="inventory-item-details__icon-container" onClick={handleEdit}>
+                    <img className="inventory-item-details__icon" src={editIcon} alt="edit icon"></img>
                     <span className="inventory-item-details__edit-text">Edit</span>
                 </div>
             </div>

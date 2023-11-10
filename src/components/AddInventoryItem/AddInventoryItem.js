@@ -17,10 +17,10 @@ function AddInventoryItemComponent() {
                 const response = await axios.get('http://localhost:8081/api/warehouses/');
                 setWarehouses(response.data);
             } catch (error) {
-                console.error('Error fetching warehouses:', error);
+                console.error(error);
             }
         };
-        
+
         const fetchCategories = async () => {
             try {
                 const response = await axios.get('http://localhost:8081/api/inventories/');
@@ -40,17 +40,12 @@ function AddInventoryItemComponent() {
         fetchCategories();
     }, []);
 
-
     const handleChange = (e) => {
         const name = e.target.name;
         const value = e.target.value;
 
         const newFormData = { ...formData };
         newFormData[name] = value;
-
-        if (name === 'status' && value === 'out of stock') {
-            newFormData.quantity = '';
-        }
 
         setFormData(newFormData);
 
@@ -64,7 +59,6 @@ function AddInventoryItemComponent() {
     function handleCancel() {
         navigate(-1);
     }
-
 
     const validateForm = () => {
         let isValid = true;
@@ -95,7 +89,6 @@ function AddInventoryItemComponent() {
         return isValid;
     };
 
-
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -115,11 +108,9 @@ function AddInventoryItemComponent() {
             localStorage.setItem('recentInventoryChange', JSON.stringify(response.data));
             navigate('/inventory');
         } catch (error) {
-            const errorMessage = error.response ? error.response.data.error : error.message;
-            alert(`There was an error adding the inventory item: ${errorMessage}`);
+            alert(error);
         }
     };
-
 
     return (
         <section className="add-inventory-item">

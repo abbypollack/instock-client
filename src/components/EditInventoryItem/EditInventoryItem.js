@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import arrowBackIcon from '../../assets/icons/arrow_back-24px.svg';
 import './EditInventoryItem.scss';
 
-function EditInventoryItemComponent({ itemId }) {
+function EditInventoryItemComponent() {
+    const { itemId } = useParams();
     const navigate = useNavigate();
     const [formData, setFormData] = useState({ itemName: '', description: '', category: '', status: 'in stock', quantity: '', warehouse: '', });
     const [errors, setErrors] = useState({});
@@ -17,7 +18,7 @@ function EditInventoryItemComponent({ itemId }) {
                 const response = await axios.get('http://localhost:8081/api/warehouses/');
                 setWarehouses(response.data);
             } catch (error) {
-                console.error('Error fetching warehouses:', error);
+                console.error(error);
             }
         };
 
@@ -40,16 +41,35 @@ function EditInventoryItemComponent({ itemId }) {
         fetchCategories();
     }, []);
 
+    useEffect(() => {
+        const fetchItemDetails = async () => {
+            try {
+                const response = await axios.get(`http://localhost:8081/api/inventories/${itemId}`);
+                const itemData = response.data;
+                setFormData({
+                    itemName: itemData.item_name || '',
+                    description: itemData.description || '',
+                    category: itemData.category || '',
+                    status: itemData.status || 'in stock',
+                    quantity: itemData.quantity || '',
+                    warehouse: itemData.warehouse_id || '',
+                });
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        if (itemId) {
+            fetchItemDetails();
+        }
+    }, [itemId]);
+
+
     const handleChange = (e) => {
         const name = e.target.name;
         const value = e.target.value;
 
         const newFormData = { ...formData };
         newFormData[name] = value;
-
-        if (name === 'status' && value === 'out of stock') {
-            newFormData.quantity = '';
-        }
 
         setFormData(newFormData);
 
@@ -63,7 +83,6 @@ function EditInventoryItemComponent({ itemId }) {
     function handleCancel() {
         navigate(-1);
     }
-
 
     const validateForm = () => {
         let isValid = true;
@@ -81,9 +100,9 @@ function EditInventoryItemComponent({ itemId }) {
             isValid = false;
             newErrors.category = 'Please select a category.';
         }
-        if (!formData.warehouse_id) {
+        if (!formData.warehouse) {
             isValid = false;
-            newErrors.warehouse_id = 'Please select a warehouse.';
+            newErrors.warehouse = 'Please select a warehouse.';
         }
         if (formData.status === 'in stock' && (!formData.quantity || formData.quantity <= 0)) {
             isValid = false;
@@ -113,8 +132,7 @@ function EditInventoryItemComponent({ itemId }) {
             localStorage.setItem('recentInventoryChange', JSON.stringify(response.data));
             navigate('/inventory');
         } catch (error) {
-            const errorMessage = error.response ? error.response.data.error : error.message;
-            alert(`There was an error updating the inventory item: ${errorMessage}`);
+            alert(error);
         }
     };
 
@@ -231,7 +249,6 @@ function EditInventoryItemComponent({ itemId }) {
             </form>
         </section>
     );
-
 }
 
 export default EditInventoryItemComponent;
