@@ -47,13 +47,8 @@ function AddInventoryItemComponent() {
             const newErrors = { ...errors };
             newErrors[name] = '';
             setErrors(newErrors);
-            setErrors(prevErrors => ({
-                ...prevErrors,
-                [name]: ''
-            }));
         }
     };
-
 
     function handleCancel() {
         navigate(-1);
@@ -82,7 +77,7 @@ function AddInventoryItemComponent() {
             newErrors.quantity = 'Quantity must be greater than 0.';
         }
 
-    
+
         setErrors(newErrors);
         return isValid;
     };
@@ -109,9 +104,6 @@ function AddInventoryItemComponent() {
         <section className="add-inventory-item">
             <div className="add-inventory-item__title-container">
                 <img className="add-inventory-item__title-icon" src={arrowBackIcon} onClick={handleCancel} alt="arrow back icon" />
-                <Link to="/inventory">
-                    <img className="add-inventory-item__title-icon" src={arrowBackIcon} alt="arrow back icon" />
-                </Link>
                 <h1 className="add-inventory-item__title">Add Inventory Item</h1>
             </div>
             <form className="add-inventory-item__form" onSubmit={handleSubmit} noValidate>
