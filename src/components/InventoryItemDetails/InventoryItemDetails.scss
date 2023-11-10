@@ -23,9 +23,11 @@
         @include tablet {
             @include tablet-header-text;
         }
-        &-and-icon{
+
+        &-and-icon {
             display: flex;
         }
+
         &-container {
             @include divider;
             display: flex;
@@ -52,14 +54,21 @@
 
         &--stock {
             @include mobile-table-header;
-            @include in-stock-tag;
             text-transform: uppercase;
             border: none;
+        }
+
+        &--in-stock {
+            @include in-stock-tag;
+        }
+        &--out-of-stock {
+            @include out-of-stock-tag;
         }
     }
 
     &__icon {
         padding: .5rem;
+
         &-container {
             background-color: $primary-blue;
             border-radius: 50%;

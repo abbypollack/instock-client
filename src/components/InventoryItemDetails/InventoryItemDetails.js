@@ -60,9 +60,12 @@ function InventoryItemDetailsComponent() {
                     <div className="inventory-item-details__stock">
                         <div className="inventory-item-details__status">
                             <span className="inventory-item-details__label">Status:</span>
-                            <button disabled className="inventory-item-details__value inventory-item-details__value--stock">
+                            <button
+                                disabled
+                                className={`inventory-item-details__value inventory-item-details__value--stock ${itemDetails?.quantity > 0 ? 'inventory-item-details__value--in-stock' : 'inventory-item-details__value--out-of-stock'}`}>
                                 {itemDetails?.quantity > 0 ? 'In Stock' : 'Out of Stock'}
-                            </button >
+                            </button>
+
                         </div>
                         <div className="inventory-item-details__quantity">
                             <span className="inventory-item-details__label">Quantity:</span>
