@@ -1,2 +1,19 @@
 @use '../../styles/partials/variables' as *;
 @use '../../styles/partials/mixins' as *;
+
+.table {
+    &__container {
+        &--warehouse 
+            > tbody > tr > td  {
+            @include tablet {
+                width: 20%;
+            }
+        }
+        &--warehouse 
+            > thead > tr > th  {
+            @include tablet {
+                width: 20%;
+            }
+        }
+    }
+}
