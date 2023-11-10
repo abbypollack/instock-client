@@ -112,10 +112,6 @@
         padding: 0 1rem 1rem 1rem;
 
         @include tablet {
-            padding: $tablet-padding-left-right;
-        }
-
-        @include tablet {
             display: flex;
             padding: 0 2rem 1rem 2em;
             width: 48%;

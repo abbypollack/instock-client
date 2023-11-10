@@ -47,6 +47,7 @@ function InventoryItemDetailsComponent() {
                 </div>
                 <div className="inventory-item-details__icon-container">
                     <img className="inventory-item-details__icon" src={editIcon} alt="edit icon" onClick={handleEdit}></img>
+                    <span className="inventory-item-details__edit-text">Edit</span>
                 </div>
             </div>
             <div className="inventory-item-details__description-container">
@@ -65,7 +66,6 @@ function InventoryItemDetailsComponent() {
                                 className={`inventory-item-details__value inventory-item-details__value--stock ${itemDetails?.quantity > 0 ? 'inventory-item-details__value--in-stock' : 'inventory-item-details__value--out-of-stock'}`}>
                                 {itemDetails?.quantity > 0 ? 'In Stock' : 'Out of Stock'}
                             </button>
-
                         </div>
                         <div className="inventory-item-details__quantity">
                             <span className="inventory-item-details__label">Quantity:</span>
