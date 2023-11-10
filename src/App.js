@@ -1,6 +1,7 @@
 import './App.scss';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from './components/Footer/Footer.js';
+import Header from './components/Header/Header.js';
 import InventoryItemDetailsPage from './pages/InventoryItemDetails/InventoryItemDetails';
 import AddInventoryItemPage from './pages/AddInventoryItem/AddInventoryItem';
 import EditInventoryItemPage from "./pages/EditInventoryItem/EditInventoryItem";
@@ -21,9 +22,9 @@ function App() {
                 <Route path="/warehouse/details" element={<WarehouseDetailsPage />} />
                 {/* <Route path="" element={<WarehouseDetails />} /> */}
                 <Route path="/inventory" element={<InventoryPage />} />
-                <Route path="/inventory/:id" element={<InventoryItemDetailsPage />} />
+                <Route path="/inventory/:itemId" element={<InventoryItemDetailsPage />} />
                 {/* <Route path="" element={<EditWarehouse />} /> */}
-                <Route path="/inventory/edit" element={<EditInventoryItemPage />} />
+                <Route path="/inventory/edit/:itemId" element={<EditInventoryItemPage />} />
                 {/* <Route path="" element={<AddNewWarehouse />} /> */}
                 <Route path="/inventory/add" element={<AddInventoryItemPage />} />
             </Routes>

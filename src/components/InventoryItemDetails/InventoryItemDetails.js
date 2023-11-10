@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import {  useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import arrowBackIcon from '../../assets/icons/arrow_back-24px.svg';
 import editIcon from '../../assets/icons/edit-white-24px.svg';
@@ -7,38 +7,29 @@ import './InventoryItemDetails.scss';
 
 function InventoryItemDetailsComponent() {
     const [itemDetails, setItemDetails] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState('');
-
-    const { id } = useParams();
+    const { itemId } = useParams();
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchItemDetails = async () => {
             try {
-                const response = await axios.get(`http://localhost:8081/api/inventories/${id}`);
+                const response = await axios.get(`http://localhost:8081/api/inventories/${itemId}`);
                 setItemDetails(response.data);
             } catch (error) {
-                console.error('Error fetching item details:', error);
-                setError(`Failed to fetch item details: ${error.message}`);
+                console.error(error);
             }
-            setLoading(false);
         };
 
         fetchItemDetails();
-    }, [id]);
+    }, [itemId]);
 
     const handleEdit = () => {
-        navigate(`/inventory/edit`);
+        navigate(`/inventory/edit/${itemId}`);
     }
 
     function handleCancel() {
         navigate(-1);
     }
-
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div>Error: {error}</div>;
-    if (!itemDetails) return <div>Item not found.</div>;
 
     return (
         <section className="inventory-item-details">
@@ -47,8 +38,8 @@ function InventoryItemDetailsComponent() {
                     <img className="inventory-item-details__title-icon" onClick={handleCancel} src={arrowBackIcon} alt="arrow back icon" />
                     <h1 className="inventory-item-details__title">{itemDetails?.item_name}</h1>
                 </div>
-                <div className="inventory-item-details__icon-container">
-                    <img className="inventory-item-details__icon" src={editIcon} alt="edit icon" onClick={handleEdit}></img>
+                <div className="inventory-item-details__icon-container" onClick={handleEdit}>
+                    <img className="inventory-item-details__icon" src={editIcon} alt="edit icon"></img>
                     <span className="inventory-item-details__edit-text">Edit</span>
                 </div>
             </div>
