@@ -13,8 +13,8 @@ function Header(){
                 <div>
                     <ul className='header__links'>
                         
-                        <li><Link to='/WarehousePage' className='header__links-warehouses'>Warehouses</Link></li>
-                        <li><Link to='/InventoryPage' className='header__links-inventory'>Inventory</Link></li>
+                        <li><Link to='/warehouse' className='header__links-warehouses'>Warehouses</Link></li>
+                        <li><Link to='/inventory' className='header__links-inventory'>Inventory</Link></li>
                         
                     </ul>
                 </div>

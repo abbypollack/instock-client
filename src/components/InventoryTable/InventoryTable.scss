@@ -1,0 +1,139 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.table {
+    font-size: .6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__inventory {
+        border-collapse: collapse;
+    }
+}
+table {
+    @include tablet {
+        tr {
+            display: flex;
+            flex-direction: row;
+        }
+        td, th {
+            display: flex;
+            width: 15%;
+            flex-direction: row;
+            text-align: left;
+            padding: 1rem 1.5rem;
+            font-size: .8rem;
+        }
+    }
+    thead {
+        th {
+            display: none;
+            @include tablet {
+                display: flex;
+                background-color: #f2f2f2;
+                text-transform: uppercase;
+            }
+        }
+    }
+
+
+    tbody {
+        @include tablet {
+            p {
+                display: none;
+            }
+        }
+        tr {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        td, th {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            @include tablet {
+                width: 15%;
+            }
+            img {
+            width: 1rem;
+            }
+        }
+
+        @include tablet {
+            td {
+                border-bottom: 1px solid #ccc;
+                text-transform: capitalize;
+            }
+        }
+        td:nth-child(1) {
+            order: 1;
+            @include tablet {
+                order: 0;
+            }
+        }
+        td:nth-child(2) {
+            order: 3;
+            @include tablet {
+                order: 0;
+            }
+        }
+        td:nth-child(3) {
+            order: 2;   
+            @include tablet {
+                order: 0; 
+            }
+        }
+        td:nth-child(4) {
+            order: 4;
+            @include tablet {
+                order: 0;
+            }
+        }
+        td:nth-child(5) {
+            order: 6;
+            @include tablet {
+                order: 0;
+            }
+        }
+        td:nth-child(6) {
+            order: 5;
+            @include tablet {
+                order: 0;
+            }
+        }
+        td:nth-child(7) {
+            order: 7;
+            @include tablet {
+                display: none;
+            }
+        }
+        td:nth-child(8) {
+            order: 8;
+            @include tablet {
+                display: none;
+            }
+        }
+        td:nth-child(9) {
+            order: 9;
+            display: none;
+            @include tablet {
+                display: block;
+                order: 0;
+            }
+        }
+    }
+}
+
+.visibility-hidden {
+    visibility: hidden;
+    @include tablet {
+        display: none;
+    }
+}
+.display-none__mobile {
+    display: none;
+    @include tablet {
+        display: block;
+    }
+}
