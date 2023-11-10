@@ -9,9 +9,8 @@ import WarehouseDetailsPage from './pages/WarehouseDetailsPage/WarehouseDetailsP
 import AddNewWarehouse from './pages/AddNewWarehouse/AddNewWarehouse';
 // import EditInventoryItem from './pages/EditInventoryItem/EditInventoryItem';
 // import EditWarehouse from './pages/EditWarehouse/EditWarehouse';
-// import WarehousePage from './pages/WarehousePage/WarehousePage';
+import WarehousePage from './pages/WarehousePage/WarehousePage';
 import InventoryPage from "./pages/InventoryPage/InventoryPage.js";
-import Header from './components/Header/Header.js';
 
 
 function App() {
