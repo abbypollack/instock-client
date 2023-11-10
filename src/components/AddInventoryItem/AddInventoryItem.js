@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import arrowBackIcon from '../../assets/icons/arrow_back-24px.svg';
 import './AddInventoryItem.scss';
@@ -17,32 +17,38 @@ function AddInventoryItemComponent() {
                 const response = await axios.get('http://localhost:8081/api/warehouses/');
                 setWarehouses(response.data);
             } catch (error) {
-                console.error('Error fetching warehouses:', error);
+                console.error(error);
             }
         };
 
         const fetchCategories = async () => {
             try {
                 const response = await axios.get('http://localhost:8081/api/inventories/');
-                const uniqueCategories = Array.from(new Set(response.data.map(item => item.category)));
-                setCategories(uniqueCategories);
+                let categories = [];
+                response.data.forEach(item => {
+                    let category = item.category;
+                    if (!categories.includes(category)) {
+                        categories.push(category);
+                    }
+                })
+                setCategories(categories);
             } catch (error) {
-                console.error('Error fetching categories:', error);
+                console.error(error);
             }
         };
-
         fetchWarehouses();
         fetchCategories();
     }, []);
 
-
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prevFormData => ({
-            ...prevFormData,
-            [name]: value,
-            ...(name === 'status' && value === 'out of stock' && { quantity: '' })
-        }));
+        const name = e.target.name;
+        const value = e.target.value;
+
+        const newFormData = { ...formData };
+        newFormData[name] = value;
+
+        setFormData(newFormData);
+
         if (errors[name]) {
             setErrors(prevErrors => ({
                 ...prevErrors,
@@ -55,7 +61,6 @@ function AddInventoryItemComponent() {
     function handleCancel() {
         navigate(-1);
     }
-
 
     const validateForm = () => {
         let isValid = true;
@@ -85,14 +90,13 @@ function AddInventoryItemComponent() {
         setErrors(newErrors);
         return isValid;
     };
-    
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (!validateForm()) return;
 
-        const payload = {
+        const inventoryItemData = {
             warehouse_id: formData.warehouse_id,
             item_name: formData.itemName,
             description: formData.description,
@@ -102,15 +106,13 @@ function AddInventoryItemComponent() {
         };
 
         try {
-            const response = await axios.post('http://localhost:8081/api/inventories/', payload);
+            const response = await axios.post('http://localhost:8081/api/inventories/', inventoryItemData);
             localStorage.setItem('recentInventoryChange', JSON.stringify(response.data));
             navigate('/inventory');
         } catch (error) {
-            const errorMessage = error.response ? error.response.data.error : error.message;
-            alert(`There was an error adding the inventory item: ${errorMessage}`);
+            alert(error);
         }
     };
-
 
     return (
         <section className="add-inventory-item">
