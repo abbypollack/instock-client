@@ -24,40 +24,39 @@ function InventoryTable({inventories, warehouses}) {
     // };
 
     return (
-    
-<div className="table">
-        <table className="table__container table__container--inventory">
-            <thead>
-                <tr>
-                    <th>Inventory Item <img src={sort} alt="sort" /></th>
-                    <th>Category <img src={sort} alt="sort" /></th>
-                    <th>Status<img src={sort} alt="sort" /></th>
-                    <th>Quantity<img src={sort} alt="sort" /></th>
-                    <th>Warehouse<img src={sort} alt="sort" /></th>
-                    <th>Actions<img src={sort} alt="sort" /></th>
-                </tr>
-            </thead>
-            <tbody>
-            {inventories.map((inventory) => (
-                        <tr key={inventory.id}>
-                            <td className="table__position1 table__item--inventory"><p>Inventory Item:</p>{inventory.item_name}<img src={chevron} alt="chevron"/></td>
-                            <td className="table__position2 table__item--inventory"><p>Category:</p>{inventory.category}</td>
-                            <td className="table__position3 table__item--inventory"><p>Status:</p>{inventory.status}</td>
-                            <td className="table__position4 table__item--inventory"><p>Quantity:</p>{inventory.quantity}</td>
-                            <td className="table__position5 table__item--inventory"><p>Warehouse:</p>{warehouses.find((warehouse) => warehouse.id === inventory.warehouse_id)?.warehouse_name || inventory.warehouse_name}</td>
-                            <td className="table__position6 table__item--inventory visibility-hidden"><p>Actions</p></td>
-                            <td className="table__position7 table__item--inventory"><img src={deleted} alt="deleted" /></td>
-                            <td className="table__position8 table__item--inventory"><img src={edit} alt="edit" /></td>
-                            <td className="table__position9 table__item--inventory display-none__mobile">
-                                <img src={deleted} alt="deleted" />
-                                <img src={edit} alt="edit" />
-                            </td>
-                        </tr>
-                    ))}
-                
-            </tbody>
-        </table>
-    </div>
+    <div className="table">
+            <table className="table__container table__container--inventory">
+                <thead>
+                    <tr>
+                        <th>Inventory Item <img src={sort} alt="sort" /></th>
+                        <th>Category <img src={sort} alt="sort" /></th>
+                        <th>Status<img src={sort} alt="sort" /></th>
+                        <th>Quantity<img src={sort} alt="sort" /></th>
+                        <th>Warehouse<img src={sort} alt="sort" /></th>
+                        <th>Actions<img src={sort} alt="sort" /></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {inventories.map((inventory) => (
+                            <tr key={inventory.id}>
+                                <td className="table__position1 table__item--inventory"><p>Inventory Item:</p>{inventory.item_name}<img src={chevron} alt="chevron"/></td>
+                                <td className="table__position2 table__item--inventory"><p>Category:</p>{inventory.category}</td>
+                                <td className="table__position3 table__item--inventory"><p>Status:</p>{inventory.status}</td>
+                                <td className="table__position4 table__item--inventory"><p>Quantity:</p>{inventory.quantity}</td>
+                                <td className="table__position5 table__item--inventory"><p>Warehouse:</p>{warehouses.find((warehouse) => warehouse.id === inventory.warehouse_id)?.warehouse_name || inventory.warehouse_name}</td>
+                                <td className="table__position6 table__item--inventory visibility-hidden"><p>Actions</p></td>
+                                <td className="table__position7 table__item--inventory"><img src={deleted} alt="deleted" /></td>
+                                <td className="table__position8 table__item--inventory"><img src={edit} alt="edit" /></td>
+                                <td className="table__position9 table__item--inventory display-none__mobile">
+                                    <img src={deleted} alt="deleted" />
+                                    <img src={edit} alt="edit" />
+                                </td>
+                            </tr>
+                        ))}
+                    
+                </tbody>
+            </table>
+        </div>
     )
 }
 
