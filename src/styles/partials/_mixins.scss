@@ -41,9 +41,17 @@
 @mixin mobile-table-header {
   font-size: .6875rem;
   line-height: 1rem;
+  text-transform: uppercase;
   font-weight: $font-weight-semi-bold;
   color: $secondary-slate;
   font-family: 'titillium-semibold';
+}
+
+@mixin mobile-table-text {
+  font-size: .8125rem;
+  line-height: 1.25rem;
+  color: $primary-black;
+  font-family: 'titillium';
 }
 
 @mixin mobile-body-large-text {

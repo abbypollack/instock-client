@@ -2,28 +2,34 @@
 @use '../../styles/partials/mixins' as *;
 
 .table {
-    font-size: .6rem;
     display: flex;
     justify-content: center;
     align-items: center;
-
-    &__inventory {
+    
+    &__container {
+        width: auto;
         border-collapse: collapse;
     }
 }
 table {
+    th, p {
+        @include mobile-table-header;
+        @include tablet {
+            @include tablet-table-header;
+        }
+    }
     @include tablet {
         tr {
             display: flex;
             flex-direction: row;
         }
-        td, th {
-            display: flex;
-            width: 15%;
-            flex-direction: row;
-            text-align: left;
-            padding: 1rem 1.5rem;
-            font-size: .8rem;
+    }
+    td, th {
+        @include tablet {
+        display: flex;
+        width: 15%;
+        flex-direction: row;
+        text-align: left;
         }
     }
     thead {
@@ -36,8 +42,6 @@ table {
             }
         }
     }
-
-
     tbody {
         @include tablet {
             p {
@@ -47,6 +51,10 @@ table {
         tr {
             display: flex;
             flex-wrap: wrap;
+            @include divider;
+            width: auto;
+
+
         }
         td, th {
             display: flex;
@@ -59,13 +67,10 @@ table {
             width: 1rem;
             }
         }
-
-        @include tablet {
-            td {
-                border-bottom: 1px solid #ccc;
-                text-transform: capitalize;
-            }
+        td {
+            @include mobile-table-text;
         }
+        
         td:nth-child(1) {
             order: 1;
             @include tablet {

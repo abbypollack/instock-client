@@ -25,7 +25,7 @@ function InventoryTable({inventories, warehouses}) {
     return (
     
 <div className="table">
-        <table className="table__inventory">
+        <table className="table__container">
             <thead>
                 <tr>
                     <th>Inventory Item <img src={sort} alt="sort" /></th>
