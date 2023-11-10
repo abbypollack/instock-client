@@ -5,6 +5,8 @@
 
 .warehouse-inventory {
     background-color: $primary-white;
+    width: 90vw;
+    align-items: center;
     &__title {
         @include mobile-header-text;
         @include padding-headlines;
@@ -14,6 +16,7 @@
         &-container {
             @include divider;
             display: flex;
+            justify-content: space-around;
             padding: $mobile-padding-left-right;
             @include tablet {
                 padding: $tablet-padding-left-right;
