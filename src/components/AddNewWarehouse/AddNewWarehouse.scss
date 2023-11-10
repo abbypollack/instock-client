@@ -1,0 +1,96 @@
+@use '../../styles/partials/_globals.scss' as *;
+@use '../../styles/partials/_mixins.scss' as *;
+@use '../../styles/partials/_typography.scss' as *;
+@use '../../styles/partials/_variables.scss' as *;
+
+.add-warehouse-item {
+    background-color: $primary-white;
+
+    &__title {
+        @include mobile-header-text;
+        @include padding-headlines;
+        font-size: 1.5rem;
+
+        @include tablet {
+            @include tablet-header-text;
+        }
+
+        &-container {
+            display: flex;
+            align-items: center;
+            @include divider;
+            padding: $mobile-padding-left-right;
+
+            @include tablet {
+                padding: $tablet-padding-left-right;
+            }
+
+            @include desktop {
+                padding: $desktop-padding-left-right;
+            }
+        }
+
+        &-icon {
+            margin: 0.8rem 1rem 0 0;
+        }
+    }
+
+    &__form {
+        @include tablet {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 1.875rem;
+        }
+    }
+
+    &__header {
+        @include mobile-subheader-text;
+        padding: 1rem 1rem;
+    }
+
+    &__subheader {
+        @include mobile-body-large-text;
+        font-weight: 700;
+        padding: 0rem 1rem;
+    }
+
+    &__details {
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    &__input {
+        @include form-field;
+        margin: .5rem 1rem;
+        width: 90%;
+    }
+
+    &__split {
+        @include divider;
+    }
+
+    &__button {
+        display: flex;
+        align-items: center;
+        background-color: $background-light-grey;
+        height: 4.25rem;
+        padding: $mobile-padding-left-right;
+
+        &-submit {
+            @include cta-button;
+            @include mobile-body-small-text;
+            background-color: $primary-blue;
+            color: $primary-white;
+            border: none;
+        }
+
+        &-cancel {
+            @include cta-button;
+            background-color: $primary-white;
+            color: $secondary-slate;
+            border: 1px solid $secondary-cloud;
+            margin-right: .9375rem;
+        }
+    }
+}

@@ -3,35 +3,91 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
 import arrowBackIcon from '../../assets/icons/arrow_back-24px.svg';
+import "./AddNewWarehouse.scss"
 
 function AddNewWarehouseComponent() {
-    const [addWarehouse, setAddWarehouse] = useState(null);
-    useEffect(() => {
-        async function addingWarehouse(){
-            const response = await axios.post('http://localhost:8080/api/warehouses', addWarehouse)
-        }
-        if (addWarehouse){
-            addWarehouse();
-        }
-    }, [addWarehouse]);
+    const navigate = useNavigate();
+    const [formData, setFormData] = useState({ warehouseName: '', address: '', city: '', country: '', contactName: '', position: '', phone: '', email: '' });
+    const [errors, setErrors] = useState({});
 
-    const handleSubmit = (x) => {
+    const handleChange = (x) => {
+        const { name, value } = x.target;
+        setFormData(prevFormData => ({
+            ...prevFormData,
+            [name]: value
+        }));
+    };
+
+
+    function handleCancel() {
+        navigate(-1);
+    }
+
+    const validateForm = () => {
+        let isValid = true;
+        let newErrors = {};
+
+        if (!formData.warehouseName.trim()) {
+            isValid = false;
+            newErrors.warehouseName = 'A warehouse name is required.';
+        }
+        if (!formData.address.trim()) {
+            isValid = false;
+            newErrors.address = 'Address is required.';
+        }
+        if (!formData.city.trim()) {
+            isValid = false;
+            newErrors.city = 'A city is required.';
+        }
+        if (!formData.country.trim()) {
+            isValid = false;
+            newErrors.country = 'A country is required.';
+        }
+        if (!formData.contactName.trim()) {
+            isValid = false;
+            newErrors.contactName = 'A contact is needed';
+        }
+        if (!formData.position.trim()) {
+            isValid = false;
+            newErrors.position = "Please give us the contact's position";
+        }
+        if (!formData.phone.trim()) {
+            isValid = false;
+            newErrors.phone = 'An email is required.';
+        }
+        if (!formData.email.trim()) {
+            isValid = false;
+            newErrors.email = 'A phone nuber is required.';
+        }
+
+        setErrors(newErrors);
+        return isValid;
+    };
+
+
+    const handleSubmit = async (x) => {
         x.preventDefault();
 
-        const warehouseSubmit = {
-            warehouse_name : x.target.warehousename.value,
-            address : x.target.address.value,
-            city : x.target.city.value,
-            country : x.target.country.value,
-            contactname : x.target.contactname.value,
-            contact_position : x.target.position.value,
-            contact_phone : x.target.phone.value,
-            contact_email : x.target.email.value
-        }
+        if (!validateForm()) return;
 
-        setAddWarehouse(warehouseSubmit);
-        x.target.reset();
-    }
+        const payload = {
+            warehouse_name: formData.warehouseName,
+            address: formData.address,
+            city: formData.city,
+            country: formData.country,
+            contact_name: formData.contactName,
+            contact_position: formData.position,
+            contact_phone: formData.phone,
+            contact_email: formData.email,
+        };
+
+        try {
+            const response = await axios.post('http://localhost:8081/api/warehouses', payload);
+        } catch (error) {
+            const errorMessage = error.response ? error.response.data.error : error.message;
+            alert(`There was an error adding the new warehouse: ${errorMessage}`);
+        }
+    };
 
     return (
         <section className='add-warehouse-item'>
@@ -42,107 +98,125 @@ function AddNewWarehouseComponent() {
                 <h1 className='add-warehouse-item__title'>Add New Warehouse</h1>
             </div>
 
-            <section className='add-warehouse-item__flex'>
-                <form className='add-warehouse-item__form' onSubmit={handleSubmit}>
+            <form className='add-warehouse-item__form' onSubmit={handleSubmit} noValidate>
+                <div className='add-warehouse-item__split'>
+                    <h2 className='add-warehouse-item__header'>Warehouse Details</h2>
                     <div className='add-warehouse-item__details'>
-                        <h2 className='add-warehouse-item__header'>Warehouse Details</h2>
-                        <h3 className='add-warehouse-item__subheader'>Warehouse Name</h3>
+                        <label className='add-warehouse-item__subheader'>Warehouse Name</label>
                         <input
                             className='add-warehouse-item__input'
                             type='text'
-                            placeholder='warehouse name'
-                            id='warehousename'
-                            name='warehousename'
+                            placeholder='Warehouse Name'
+                            id='warehouseName'
+                            name='warehouseName'
+                            value={formData.warehouseName}
+                            onChange={handleChange}
                         />
                     </div>
 
                     <div className='add-warehouse-item__details'>
-                        <h3 className='add-warehouse-item__subheader'>Address</h3>
+                        <label className='add-warehouse-item__subheader'>Address</label>
                         <input
                             className='add-warehouse-item__input'
                             type='text'
-                            placeholder='address'
+                            placeholder='Street Address'
                             id='address'
                             name='address'
+                            value={formData.address}
+                            onChange={handleChange}
                         />
                     </div>
 
                     <div className='add-warehouse-item__details'>
-                        <h3 className='add-warehouse-item__subheader'>City</h3>
+                        <label className='add-warehouse-item__subheader'>City</label>
                         <input
                             className='add-warehouse-item__input'
                             type='text'
-                            placeholder='city'
+                            placeholder='City'
                             id='city'
                             name='city'
+                            value={formData.city}
+                            onChange={handleChange}
                         />
                     </div>
 
                     <div className='add-warehouse-item__details'>
-                        <h3 className='add-warehouse-item__subheader'>Country</h3>
+                        <label className='add-warehouse-item__subheader'>Country</label>
                         <input
                             className='add-warehouse-item__input'
                             type='text'
-                            placeholder='country'
+                            placeholder='Country'
                             id='country'
                             name='country'
+                            value={formData.country}
+                            onChange={handleChange}
                         />
                     </div>
-{/* ========================= split forms in half ========================= */}
-                    <div className='add-warehouse-item__details'>
+                </div>
+                {/* =============== split forms in half =============== */}
+                <div>
                     <h2 className='add-warehouse-item__header'>Contact Details</h2>
-                        <h3 className='add-warehouse-item__subheader'>Contact Name</h3>
+                    <div className='add-warehouse-item__details'>
+                        <label className='add-warehouse-item__subheader'>Contact Name</label>
                         <input
                             className='add-warehouse-item__input'
                             type='text'
-                            placeholder='contact name'
-                            id='contactname'
-                            name='contactname'
+                            placeholder='Contact Name'
+                            id='contactName'
+                            name='contactName'
+                            value={formData.contactName}
+                            onChange={handleChange}
                         />
                     </div>
 
                     <div className='add-warehouse-item__details'>
-                        <h3 className='add-warehouse-item__subheader'>Position</h3>
+                        <label className='add-warehouse-item__subheader'>Position</label>
                         <input
                             className='add-warehouse-item__input'
                             type='text'
-                            placeholder='position'
+                            placeholder='Position'
                             id='position'
                             name='position'
+                            value={formData.position}
+                            onChange={handleChange}
                         />
                     </div>
 
                     <div className='add-warehouse-item__details'>
-                        <h3 className='add-warehouse-item__subheader'>Phone Number</h3>
+                        <label className='add-warehouse-item__subheader'>Phone Number</label>
                         <input
                             className='add-warehouse-item__input'
                             type='text'
-                            placeholder='phone'
+                            placeholder='Phone Number'
                             id='phone'
                             name='phone'
+                            value={formData.phone}
+                            onChange={handleChange}
                         />
                     </div>
 
                     <div className='add-warehouse-item__details'>
-                        <h3 className='add-warehouse-item__subheader'>Email</h3>
+                        <label className='add-warehouse-item__subheader'>Email</label>
                         <input
                             className='add-warehouse-item__input'
                             type='text'
-                            placeholder='email'
+                            placeholder='Email'
                             id='email'
                             name='email'
+                            value={formData.email}
+                            onChange={handleChange}
                         />
                     </div>
-                </form>
-            <div>
-                <button className='add-warehouse-item__button'>
-                    Cancel
-                </button>
-                <button className='add-warehouse-item__button'>
-                    + Add Warehouse
-                </button>
-            </div>
-            </section>
+                </div>
+                <div className='add-warehouse-item__button'>
+                    <button className='add-warehouse-item__button-cancel' type="button" onClick={handleCancel}>
+                        Cancel
+                    </button>
+                    <button className='add-warehouse-item__button-submit' type='submit' >
+                        + Add Warehouse
+                    </button>
+                </div>
+            </form>
 
         </section>
     )
