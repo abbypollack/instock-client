@@ -3,14 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import arrowBackIcon from '../../assets/icons/arrow_back-24px.svg';
 import './AddInventoryItem.scss';
-
 function AddInventoryItemComponent() {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({ itemName: '', description: '', category: '', status: 'in stock', quantity: '', warehouse_id: '', });
     const [errors, setErrors] = useState({});
     const [warehouses, setWarehouses] = useState([]);
     const [categories, setCategories] = useState([]);
-
     useEffect(() => {
         const fetchWarehouses = async () => {
             try {
@@ -20,7 +18,6 @@ function AddInventoryItemComponent() {
                 console.error(error);
             }
         };
-
         const fetchCategories = async () => {
             try {
                 const response = await axios.get('http://localhost:8081/api/inventories/');
@@ -39,17 +36,17 @@ function AddInventoryItemComponent() {
         fetchWarehouses();
         fetchCategories();
     }, []);
-
     const handleChange = (e) => {
         const name = e.target.name;
         const value = e.target.value;
-
         const newFormData = { ...formData };
         newFormData[name] = value;
-
         setFormData(newFormData);
 
         if (errors[name]) {
+            const newErrors = { ...errors };
+            newErrors[name] = '';
+            setErrors(newErrors);
             setErrors(prevErrors => ({
                 ...prevErrors,
                 [name]: ''
@@ -61,11 +58,9 @@ function AddInventoryItemComponent() {
     function handleCancel() {
         navigate(-1);
     }
-
     const validateForm = () => {
         let isValid = true;
         let newErrors = {};
-
         if (!formData.itemName.trim()) {
             isValid = false;
             newErrors.itemName = 'Item name is required.';
@@ -86,16 +81,14 @@ function AddInventoryItemComponent() {
             isValid = false;
             newErrors.quantity = 'Quantity must be greater than 0.';
         }
+
     
         setErrors(newErrors);
         return isValid;
     };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         if (!validateForm()) return;
-
         const inventoryItemData = {
             warehouse_id: formData.warehouse_id,
             item_name: formData.itemName,
@@ -104,7 +97,6 @@ function AddInventoryItemComponent() {
             status: formData.status,
             quantity: formData.status === 'in stock' ? formData.quantity : 0
         };
-
         try {
             const response = await axios.post('http://localhost:8081/api/inventories/', inventoryItemData);
             localStorage.setItem('recentInventoryChange', JSON.stringify(response.data));
@@ -113,10 +105,10 @@ function AddInventoryItemComponent() {
             alert(error);
         }
     };
-
     return (
         <section className="add-inventory-item">
             <div className="add-inventory-item__title-container">
+                <img className="add-inventory-item__title-icon" src={arrowBackIcon} onClick={handleCancel} alt="arrow back icon" />
                 <Link to="/inventory">
                     <img className="add-inventory-item__title-icon" src={arrowBackIcon} alt="arrow back icon" />
                 </Link>
@@ -128,11 +120,9 @@ function AddInventoryItemComponent() {
                     <label className="add-inventory-item__label" htmlFor="itemName">Item Name</label>
                     <input className="add-inventory-item__input" type="text" placeholder="Item Name" id="itemName" name="itemName" value={formData.itemName} onChange={handleChange} />
                     {errors.itemName && <p className="add-inventory-item__error">{errors.itemName}</p>}
-
                     <label className="add-inventory-item__label" htmlFor="description">Description</label>
                     <textarea className="add-inventory-item__textarea" id="description" placeholder="Please enter a brief item description." name="description" value={formData.description} onChange={handleChange} ></textarea>
                     {errors.description && <p className="add-inventory-item__error">{errors.description}</p>}
-
                     <label className="add-inventory-item__label" htmlFor="category">Category</label>
                     <select className="add-inventory-item__select" id="category" name="category" value={formData.category} onChange={handleChange}>
                         <option value="">Please select</option>
@@ -180,7 +170,5 @@ function AddInventoryItemComponent() {
             </form>
         </section>
     );
-
 }
-
 export default AddInventoryItemComponent;
