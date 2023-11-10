@@ -1,0 +1,157 @@
+@use '../../styles/partials/_globals.scss' as *;
+@use '../../styles/partials/_mixins.scss' as *;
+@use '../../styles/partials/_typography.scss' as *;
+@use '../../styles/partials/_variables.scss' as *;
+
+.inventory-item-details {
+    background-color: $primary-white;
+    @include mobile-body-medium-text;
+    @include padding-bottom-components;
+
+    @include tablet {
+        @include tablet-body-medium-text;
+    }
+
+    &__item-container {
+        padding-top: 1rem;
+        @include tablet {
+            border-bottom: none;
+            display: flex;
+            width: 48%;
+            border-right: $secondary-cloud 1px solid;
+            padding-right: 3.125rem;
+            flex-direction: column;
+            padding: 0 2rem 1rem 2em;
+        }
+    }
+    &__info-container{
+        @include tablet {
+            display: flex;
+            padding: 0 2rem 1rem 2em;
+            width: 48%;
+            flex-direction: column;
+        }
+    }
+
+    &__title {
+        @include mobile-header-text;
+        @include padding-headlines;
+
+        @include tablet {
+            @include tablet-header-text;
+        }
+
+        &-and-icon {
+            display: flex;
+        }
+
+        &-container {
+            @include divider;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: $mobile-padding-left-right;
+
+            @include tablet {
+                padding: $tablet-padding-left-right;
+            }
+
+            @include desktop {
+                padding: $desktop-padding-left-right;
+            }
+        }
+
+        &-icon {
+            margin-right: 1rem;
+        }
+    }
+
+    &__value {
+        padding-bottom: .5rem;
+
+        &--stock {
+            @include mobile-table-header;
+            text-transform: uppercase;
+            width: fit-content;
+            border: none;
+        }
+
+        &--in-stock {
+            @include in-stock-tag;
+        }
+
+        &--out-of-stock {
+            @include out-of-stock-tag;
+        }
+    }
+
+    &__icon {
+        @include tablet{
+            margin: 0 .25rem;
+        }
+        &-container {
+            background-color: $primary-blue;
+            border-radius: 20px;
+            height: fit-content;
+            display: flex;
+            align-items: center;
+            padding: .5rem;
+        }
+    }
+
+    &__label {
+        @include mobile-table-header;
+        text-transform: uppercase;
+        color: $secondary-slate;
+        padding-bottom: .25rem;
+
+        @include tablet{
+            padding-top: 1.5rem;
+        }
+    }
+
+    &__description {
+        &-container {
+            padding: $mobile-padding-left-right;
+
+            @include tablet {
+                padding: $tablet-padding-left-right;
+                display: flex;
+            }
+
+            @include desktop {
+                padding: $desktop-padding-left-right;
+            }
+        }
+    }
+
+    &__stock {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__quantity {
+        display: flex;
+        flex-direction: column;
+        width: 48%;
+    }
+
+    &__status {
+        display: flex;
+        flex-direction: column;
+        width: 48%;
+
+    }
+
+    &__edit-text {
+        display: none;
+
+        @include tablet {
+            display: inline-block;
+            @include tablet-labels-links-buttons-text;
+            color: $primary-white;
+            font-family: 'titillium-semibold';
+            margin-right: .25rem;
+        }
+    }
+}
