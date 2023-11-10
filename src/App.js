@@ -1,12 +1,11 @@
 import './App.scss';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from './components/Footer/Footer.js';
-import Header from './components/Header/Header.js';
+import Header from './components/Header/Header';
 import InventoryItemDetailsPage from './pages/InventoryItemDetails/InventoryItemDetails';
 import AddInventoryItemPage from './pages/AddInventoryItem/AddInventoryItem';
 import EditInventoryItemPage from "./pages/EditInventoryItem/EditInventoryItem";
 import WarehouseDetailsPage from './pages/WarehouseDetailsPage/WarehouseDetailsPage';
-import Header from './components/Header/Header'
 // import AddNewWarehouse from './pages/AddNewWarehouse/AddNewWarehouse';
 // import EditInventoryItem from './pages/EditInventoryItem/EditInventoryItem';
 // import EditWarehouse from './pages/EditWarehouse/EditWarehouse';
