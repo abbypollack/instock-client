@@ -110,13 +110,14 @@ function EditInventoryItemComponent({ itemId }) {
         }
     };
 
+    function handleCancel() {
+        navigate(-1);
+    }
 
     return (
         <section className="edit-inventory-item">
             <div className="edit-inventory-item__title-container">
-                <Link to="/inventory">
-                    <img className="edit-inventory-item__title-icon" src={arrowBackIcon} alt="arrow back icon" />
-                </Link>
+                <img className="edit-inventory-item__title-icon" onClick={handleCancel} src={arrowBackIcon} alt="arrow back icon" />
                 <h1 className="edit-inventory-item__title">Edit Inventory Item</h1>
             </div>
             <form className="edit-inventory-item__form" onSubmit={handleSubmit} noValidate>
