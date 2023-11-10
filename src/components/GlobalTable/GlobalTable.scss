@@ -4,24 +4,18 @@
 .table {
     display: flex;
     justify-content: center;
-    align-items: center; 
-    
+    align-items: center;
     td {
         width: 50%;
     }
     &__container {
         width: 21.4375rem;
-        //inventory list mobile height
         border-collapse: collapse;
         border-radius: 3px;
         background:  #FFF;
-        /* Card Shadow */
         box-shadow: 0px 2px 5px 0px rgba(19, 24, 44, 0.10);
         @include tablet {
             width: 44rem;
-            //inventory list height
-            height: 37.8125rem;
-
         }
     }
     &__position1 {
@@ -60,21 +54,21 @@
                 order: 0;
             }
         }
-    //delete for mobile
+    //delete icon for mobile
     &__position7 {
         order: 7;
         @include tablet {
             display: none;
         }
     }
-    //edit for mobiile
+    //edit icon for mobiile
     &__position8 {
         order: 8;
         @include tablet {
             display: none;
         }
     }
-    //icons for tablet
+    //both icons for tablet
     &__position9 {
         order: 9;
         display: none;
@@ -110,7 +104,6 @@ table {
             display: none;
             @include tablet {
                 display: flex;
-                background-color: #f2f2f2;
             }
         }
     }
