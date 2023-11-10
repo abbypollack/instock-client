@@ -3,6 +3,7 @@ import deleted from '../../assets/icons/delete_outline-24px.svg'
 import edit from '../../assets/icons/edit-24px.svg'
 import sort from '../../assets/icons/sort-24px.svg'
 import chevron from '../../assets/icons/chevron_right-24px.svg'
+import '../GlobalTable/GlobalTable.scss';
 // import {useState, useEffect} from 'react';
 
 function InventoryTable({inventories, warehouses}) {

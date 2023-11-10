@@ -10,7 +10,6 @@ import WarehouseDetailsPage from './pages/WarehouseDetailsPage/WarehouseDetailsP
 // import EditWarehouse from './pages/EditWarehouse/EditWarehouse';
 import WarehousePage from './pages/WarehousePage/WarehousePage';
 import InventoryPage from "./pages/InventoryPage/InventoryPage.js";
-import Header from './components/Header/Header.js';
 
 
 function App() {
