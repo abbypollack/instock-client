@@ -39,19 +39,32 @@
         @include tablet {
             display: flex;
             justify-content: space-between;
-            padding-bottom: 1.875rem;
+            flex-direction: column;
         }
     }
 
     &__header {
         @include mobile-subheader-text;
         padding: 1rem 1rem;
+        @include tablet {
+            padding: 1rem 8.5rem;
+            padding-left: 0rem;
+            margin-left: 1rem
+        }
+        @include desktop {
+            padding: 1rem 24.5rem;
+            padding-left: 0rem;
+        }
     }
 
     &__subheader {
         @include mobile-body-large-text;
         font-weight: 700;
         padding: 0rem 1rem;
+        @include tablet {
+            margin-left: 1rem;
+            padding: 0em;
+        }
     }
 
     &__details {
@@ -62,12 +75,23 @@
 
     &__input {
         @include form-field;
+        padding: 0em 1em;
         margin: .5rem 1rem;
         width: 90%;
     }
 
-    &__split {
-        @include divider;
+    &__split{
+        @include tablet{
+            display: flex;
+            justify-content: center;
+        }
+        &-line {
+            @include divider;
+            @include tablet{
+                border-bottom: none;
+                    border-right: 1px solid $secondary-cloud;
+            }
+        }
     }
 
     &__button {
@@ -76,6 +100,12 @@
         background-color: $background-light-grey;
         height: 4.25rem;
         padding: $mobile-padding-left-right;
+        @include tablet{
+            justify-content: flex-end
+        }
+        @include desktop{
+            padding: 0rem 4rem;
+        }
 
         &-submit {
             @include cta-button;
@@ -83,6 +113,12 @@
             background-color: $primary-blue;
             color: $primary-white;
             border: none;
+            @include tablet{
+                width: 22%;
+            }
+            @include desktop{
+                width: 15%;
+            }
         }
 
         &-cancel {
@@ -91,6 +127,12 @@
             color: $secondary-slate;
             border: 1px solid $secondary-cloud;
             margin-right: .9375rem;
+            @include tablet{
+                width: 22%;
+            }
+            @include desktop{
+                width: 15%;
+            }
         }
     }
 }

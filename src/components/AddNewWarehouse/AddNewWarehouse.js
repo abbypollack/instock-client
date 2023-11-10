@@ -99,115 +99,117 @@ function AddNewWarehouseComponent() {
             </div>
 
             <form className='add-warehouse-item__form' onSubmit={handleSubmit} noValidate>
-                <div className='add-warehouse-item__split'>
-                    <h2 className='add-warehouse-item__header'>Warehouse Details</h2>
-                    <div className='add-warehouse-item__details'>
-                        <label className='add-warehouse-item__subheader'>Warehouse Name</label>
-                        <input
-                            className='add-warehouse-item__input'
-                            type='text'
-                            placeholder='Warehouse Name'
-                            id='warehouseName'
-                            name='warehouseName'
-                            value={formData.warehouseName}
-                            onChange={handleChange}
-                        />
-                    </div>
+                <section className='add-warehouse-item__split'>
+                    <div className='add-warehouse-item__split-line'>
+                        <h2 className='add-warehouse-item__header'>Warehouse Details</h2>
+                        <div className='add-warehouse-item__details'>
+                            <label className='add-warehouse-item__subheader'>Warehouse Name</label>
+                            <input
+                                className='add-warehouse-item__input'
+                                type='text'
+                                placeholder='Warehouse Name'
+                                id='warehouseName'
+                                name='warehouseName'
+                                value={formData.warehouseName}
+                                onChange={handleChange}
+                            />
+                        </div>
 
-                    <div className='add-warehouse-item__details'>
-                        <label className='add-warehouse-item__subheader'>Address</label>
-                        <input
-                            className='add-warehouse-item__input'
-                            type='text'
-                            placeholder='Street Address'
-                            id='address'
-                            name='address'
-                            value={formData.address}
-                            onChange={handleChange}
-                        />
-                    </div>
+                        <div className='add-warehouse-item__details'>
+                            <label className='add-warehouse-item__subheader'>Address</label>
+                            <input
+                                className='add-warehouse-item__input'
+                                type='text'
+                                placeholder='Street Address'
+                                id='address'
+                                name='address'
+                                value={formData.address}
+                                onChange={handleChange}
+                            />
+                        </div>
 
-                    <div className='add-warehouse-item__details'>
-                        <label className='add-warehouse-item__subheader'>City</label>
-                        <input
-                            className='add-warehouse-item__input'
-                            type='text'
-                            placeholder='City'
-                            id='city'
-                            name='city'
-                            value={formData.city}
-                            onChange={handleChange}
-                        />
-                    </div>
+                        <div className='add-warehouse-item__details'>
+                            <label className='add-warehouse-item__subheader'>City</label>
+                            <input
+                                className='add-warehouse-item__input'
+                                type='text'
+                                placeholder='City'
+                                id='city'
+                                name='city'
+                                value={formData.city}
+                                onChange={handleChange}
+                            />
+                        </div>
 
-                    <div className='add-warehouse-item__details'>
-                        <label className='add-warehouse-item__subheader'>Country</label>
-                        <input
-                            className='add-warehouse-item__input'
-                            type='text'
-                            placeholder='Country'
-                            id='country'
-                            name='country'
-                            value={formData.country}
-                            onChange={handleChange}
-                        />
+                        <div className='add-warehouse-item__details'>
+                            <label className='add-warehouse-item__subheader'>Country</label>
+                            <input
+                                className='add-warehouse-item__input'
+                                type='text'
+                                placeholder='Country'
+                                id='country'
+                                name='country'
+                                value={formData.country}
+                                onChange={handleChange}
+                            />
+                        </div>
                     </div>
-                </div>
-                {/* =============== split forms in half =============== */}
-                <div>
-                    <h2 className='add-warehouse-item__header'>Contact Details</h2>
-                    <div className='add-warehouse-item__details'>
-                        <label className='add-warehouse-item__subheader'>Contact Name</label>
-                        <input
-                            className='add-warehouse-item__input'
-                            type='text'
-                            placeholder='Contact Name'
-                            id='contactName'
-                            name='contactName'
-                            value={formData.contactName}
-                            onChange={handleChange}
-                        />
-                    </div>
+                    {/* =============== split forms in half =============== */}
+                    <div>
+                        <h2 className='add-warehouse-item__header'>Contact Details</h2>
+                        <div className='add-warehouse-item__details'>
+                            <label className='add-warehouse-item__subheader'>Contact Name</label>
+                            <input
+                                className='add-warehouse-item__input'
+                                type='text'
+                                placeholder='Contact Name'
+                                id='contactName'
+                                name='contactName'
+                                value={formData.contactName}
+                                onChange={handleChange}
+                            />
+                        </div>
 
-                    <div className='add-warehouse-item__details'>
-                        <label className='add-warehouse-item__subheader'>Position</label>
-                        <input
-                            className='add-warehouse-item__input'
-                            type='text'
-                            placeholder='Position'
-                            id='position'
-                            name='position'
-                            value={formData.position}
-                            onChange={handleChange}
-                        />
-                    </div>
+                        <div className='add-warehouse-item__details'>
+                            <label className='add-warehouse-item__subheader'>Position</label>
+                            <input
+                                className='add-warehouse-item__input'
+                                type='text'
+                                placeholder='Position'
+                                id='position'
+                                name='position'
+                                value={formData.position}
+                                onChange={handleChange}
+                            />
+                        </div>
 
-                    <div className='add-warehouse-item__details'>
-                        <label className='add-warehouse-item__subheader'>Phone Number</label>
-                        <input
-                            className='add-warehouse-item__input'
-                            type='text'
-                            placeholder='Phone Number'
-                            id='phone'
-                            name='phone'
-                            value={formData.phone}
-                            onChange={handleChange}
-                        />
-                    </div>
+                        <div className='add-warehouse-item__details'>
+                            <label className='add-warehouse-item__subheader'>Phone Number</label>
+                            <input
+                                className='add-warehouse-item__input'
+                                type='text'
+                                placeholder='Phone Number'
+                                id='phone'
+                                name='phone'
+                                value={formData.phone}
+                                onChange={handleChange}
+                            />
+                        </div>
 
-                    <div className='add-warehouse-item__details'>
-                        <label className='add-warehouse-item__subheader'>Email</label>
-                        <input
-                            className='add-warehouse-item__input'
-                            type='text'
-                            placeholder='Email'
-                            id='email'
-                            name='email'
-                            value={formData.email}
-                            onChange={handleChange}
-                        />
+                        <div className='add-warehouse-item__details'>
+                            <label className='add-warehouse-item__subheader'>Email</label>
+                            <input
+                                className='add-warehouse-item__input'
+                                type='text'
+                                placeholder='Email'
+                                id='email'
+                                name='email'
+                                value={formData.email}
+                                onChange={handleChange}
+                            />
+                        </div>
                     </div>
-                </div>
+                </section>
                 <div className='add-warehouse-item__button'>
                     <button className='add-warehouse-item__button-cancel' type="button" onClick={handleCancel}>
                         Cancel
