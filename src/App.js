@@ -7,7 +7,7 @@ import EditInventoryItemPage from "./pages/EditInventoryItem/EditInventoryItem";
 import WarehouseDetailsPage from './pages/WarehouseDetailsPage/WarehouseDetailsPage';
 // import AddNewWarehouse from './pages/AddNewWarehouse/AddNewWarehouse';
 // import EditWarehouse from './pages/EditWarehouse/EditWarehouse';
-// import WarehousePage from './pages/WarehousePage/WarehousePage';
+import WarehousePage from './pages/WarehousePage/WarehousePage';
 import InventoryPage from "./pages/InventoryPage/InventoryPage.js";
 import Header from './components/Header/Header.js';
 
@@ -17,7 +17,7 @@ function App() {
         <BrowserRouter>
             <Header />
             <Routes>
-                {/* <Route path="/warehouse" element={<WarehousePage />} /> */}
+                <Route path="/warehouse" element={<WarehousePage />} />
                 <Route path="/warehouse/details" element={<WarehouseDetailsPage />} />
                 {/* <Route path="" element={<WarehouseDetails />} /> */}
                 <Route path="/inventory" element={<InventoryPage />} />
