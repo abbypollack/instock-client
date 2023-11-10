@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import arrowBackIcon from '../../assets/icons/arrow_back-24px.svg';
 import './AddInventoryItem.scss';
@@ -20,17 +20,22 @@ function AddInventoryItemComponent() {
                 console.error('Error fetching warehouses:', error);
             }
         };
-
+        
         const fetchCategories = async () => {
             try {
                 const response = await axios.get('http://localhost:8081/api/inventories/');
-                const uniqueCategories = Array.from(new Set(response.data.map(item => item.category)));
-                setCategories(uniqueCategories);
+                let categories = [];
+                response.data.forEach(item => {
+                    let category = item.category;
+                    if (!categories.includes(category)) {
+                        categories.push(category);
+                    }
+                })
+                setCategories(categories);
             } catch (error) {
-                console.error('Error fetching categories:', error);
+                console.error(error);
             }
         };
-
         fetchWarehouses();
         fetchCategories();
     }, []);
@@ -96,7 +101,7 @@ function AddInventoryItemComponent() {
 
         if (!validateForm()) return;
 
-        const payload = {
+        const inventoryItemData = {
             warehouse_id: formData.warehouse_id,
             item_name: formData.itemName,
             description: formData.description,
@@ -106,7 +111,7 @@ function AddInventoryItemComponent() {
         };
 
         try {
-            const response = await axios.post('http://localhost:8081/api/inventories/', payload);
+            const response = await axios.post('http://localhost:8081/api/inventories/', inventoryItemData);
             localStorage.setItem('recentInventoryChange', JSON.stringify(response.data));
             navigate('/inventory');
         } catch (error) {

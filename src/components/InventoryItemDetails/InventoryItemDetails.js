@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import {  useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import arrowBackIcon from '../../assets/icons/arrow_back-24px.svg';
 import editIcon from '../../assets/icons/edit-white-24px.svg';
@@ -7,9 +7,6 @@ import './InventoryItemDetails.scss';
 
 function InventoryItemDetailsComponent() {
     const [itemDetails, setItemDetails] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState('');
-
     const { id } = useParams();
     const navigate = useNavigate();
 
@@ -20,9 +17,7 @@ function InventoryItemDetailsComponent() {
                 setItemDetails(response.data);
             } catch (error) {
                 console.error('Error fetching item details:', error);
-                setError(`Failed to fetch item details: ${error.message}`);
             }
-            setLoading(false);
         };
 
         fetchItemDetails();
@@ -35,10 +30,6 @@ function InventoryItemDetailsComponent() {
     function handleCancel() {
         navigate(-1);
     }
-
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div>Error: {error}</div>;
-    if (!itemDetails) return <div>Item not found.</div>;
 
     return (
         <section className="inventory-item-details">

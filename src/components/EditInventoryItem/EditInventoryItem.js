@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import arrowBackIcon from '../../assets/icons/arrow_back-24px.svg';
 import './EditInventoryItem.scss';
 
 function EditInventoryItemComponent({ itemId }) {
     const navigate = useNavigate();
-    const [formData, setFormData] = useState({ itemName: '', description: '', category: '', status: 'in stock', quantity: 1, warehouse: '', });
+    const [formData, setFormData] = useState({ itemName: '', description: '', category: '', status: 'in stock', quantity: '', warehouse: '', });
     const [errors, setErrors] = useState({});
     const [warehouses, setWarehouses] = useState([]);
     const [categories, setCategories] = useState([]);
@@ -25,32 +24,41 @@ function EditInventoryItemComponent({ itemId }) {
         const fetchCategories = async () => {
             try {
                 const response = await axios.get('http://localhost:8081/api/inventories/');
-                const uniqueCategories = Array.from(new Set(response.data.map(item => item.category)));
-                setCategories(uniqueCategories);
+                let categories = [];
+                response.data.forEach(item => {
+                    let category = item.category;
+                    if (!categories.includes(category)) {
+                        categories.push(category);
+                    }
+                })
+                setCategories(categories);
             } catch (error) {
-                console.error('Error fetching categories:', error);
+                console.error(error);
             }
         };
-
         fetchWarehouses();
         fetchCategories();
-    }, [itemId]);
+    }, []);
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prevFormData => ({
-            ...prevFormData,
-            [name]: value,
-            ...(name === 'status' && value === 'out of stock' && { quantity: '' })
-        }));
+        const name = e.target.name;
+        const value = e.target.value;
+
+        const newFormData = { ...formData };
+        newFormData[name] = value;
+
+        if (name === 'status' && value === 'out of stock') {
+            newFormData.quantity = '';
+        }
+
+        setFormData(newFormData);
+
         if (errors[name]) {
-            setErrors(prevErrors => ({
-                ...prevErrors,
-                [name]: ''
-            }));
+            const newErrors = { ...errors };
+            newErrors[name] = '';
+            setErrors(newErrors);
         }
     };
-
 
     function handleCancel() {
         navigate(-1);
@@ -91,7 +99,7 @@ function EditInventoryItemComponent({ itemId }) {
 
         if (!validateForm()) return;
 
-        const payload = {
+        const inventoryItemData = {
             warehouse_id: formData.warehouse,
             item_name: formData.itemName,
             description: formData.description,
@@ -101,7 +109,7 @@ function EditInventoryItemComponent({ itemId }) {
         };
 
         try {
-            const response = await axios.put(`http://localhost:8081/api/inventories/${itemId}`, payload);
+            const response = await axios.put(`http://localhost:8081/api/inventories/${itemId}`, inventoryItemData);
             localStorage.setItem('recentInventoryChange', JSON.stringify(response.data));
             navigate('/inventory');
         } catch (error) {
@@ -109,10 +117,6 @@ function EditInventoryItemComponent({ itemId }) {
             alert(`There was an error updating the inventory item: ${errorMessage}`);
         }
     };
-
-    function handleCancel() {
-        navigate(-1);
-    }
 
     return (
         <section className="edit-inventory-item">
