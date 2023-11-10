@@ -41,7 +41,7 @@
         @include tablet {
             display: flex;
             justify-content: space-between;
-            padding-bottom: 1.875rem;
+            flex-wrap: wrap;
         }
     }
 
@@ -168,6 +168,8 @@
         @include tablet {
             justify-content: flex-end;
             padding: $tablet-padding-left-right;
+            width: 100%;
+            margin-top: 1.875rem;
         }
         @include desktop {
             padding: $desktop-padding-left-right;

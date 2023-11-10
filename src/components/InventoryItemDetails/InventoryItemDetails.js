@@ -32,6 +32,10 @@ function InventoryItemDetailsComponent() {
         navigate(`/inventory/edit`);
     }
 
+    function handleCancel() {
+        navigate(-1);
+    }
+
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
     if (!itemDetails) return <div>Item not found.</div>;
@@ -40,9 +44,7 @@ function InventoryItemDetailsComponent() {
         <section className="inventory-item-details">
             <div className="inventory-item-details__title-container">
                 <div className="inventory-item-details__title-and-icon">
-                    <Link to="/inventory">
-                        <img className="inventory-item-details__title-icon" src={arrowBackIcon} alt="arrow back icon" />
-                    </Link>
+                    <img className="inventory-item-details__title-icon" onClick={handleCancel} src={arrowBackIcon} alt="arrow back icon" />
                     <h1 className="inventory-item-details__title">{itemDetails?.item_name}</h1>
                 </div>
                 <div className="inventory-item-details__icon-container">
