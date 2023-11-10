@@ -37,20 +37,24 @@ function AddInventoryItemComponent() {
 
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prevFormData => ({
-            ...prevFormData,
-            [name]: value,
-            ...(name === 'status' && value === 'out of stock' && { quantity: '' })
-        }));
+        const name = e.target.name;
+        const value = e.target.value;
+
+        const newFormData = { ...formData };
+        newFormData[name] = value;
+
+        if (name === 'status' && value === 'out of stock') {
+            newFormData.quantity = '';
+        }
+
+        setFormData(newFormData);
+
         if (errors[name]) {
-            setErrors(prevErrors => ({
-                ...prevErrors,
-                [name]: ''
-            }));
+            const newErrors = { ...errors };
+            newErrors[name] = '';
+            setErrors(newErrors);
         }
     };
-
 
     function handleCancel() {
         navigate(-1);
@@ -81,11 +85,11 @@ function AddInventoryItemComponent() {
             isValid = false;
             newErrors.quantity = 'Quantity must be greater than 0.';
         }
-    
+
         setErrors(newErrors);
         return isValid;
     };
-    
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -115,9 +119,7 @@ function AddInventoryItemComponent() {
     return (
         <section className="add-inventory-item">
             <div className="add-inventory-item__title-container">
-                <Link to="/inventory">
-                    <img className="add-inventory-item__title-icon" src={arrowBackIcon} alt="arrow back icon" />
-                </Link>
+                <img className="add-inventory-item__title-icon" src={arrowBackIcon} onClick={handleCancel} alt="arrow back icon" />
                 <h1 className="add-inventory-item__title">Add Inventory Item</h1>
             </div>
             <form className="add-inventory-item__form" onSubmit={handleSubmit} noValidate>
