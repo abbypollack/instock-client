@@ -1,0 +1,16 @@
+.delete-warehouse {
+    &__background {
+        width: 20vw;
+        height: 20em;
+        background-color: rgba(200, 200, 200);
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &__container{
+        width: max-content;
+        height: max-content;
+        border-radius: 12px;
+    }
+}
