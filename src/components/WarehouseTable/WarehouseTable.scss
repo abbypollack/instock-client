@@ -3,6 +3,7 @@
 
 .table {
     &__container {
+        position: relative;
         &--warehouse 
             > tbody > tr > td  {
             @include tablet {
@@ -15,5 +16,8 @@
                 width: 20%;
             }
         }
+    }
+    &__modal{
+        position: absolute;
     }
 }
