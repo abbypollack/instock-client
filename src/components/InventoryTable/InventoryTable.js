@@ -4,7 +4,9 @@ import edit from '../../assets/icons/edit-24px.svg'
 import sort from '../../assets/icons/sort-24px.svg'
 import chevron from '../../assets/icons/chevron_right-24px.svg'
 import '../GlobalTable/GlobalTable.scss';
+import React, { Component } from "react";
 // import {useState, useEffect} from 'react';
+// import delete from '../DeleteModalInv/DeletModalInv'; 
 
 function InventoryTable({inventories, warehouses}) {
     // const [items, setItems] = useState([]);
@@ -22,6 +24,8 @@ function InventoryTable({inventories, warehouses}) {
     //     // Handle actions (e.g., delete or edit) here
     //     console.log(`Actions clicked for item with ID: ${itemId}`);
     // };
+
+
 
     return (
     <div className="table">
@@ -48,7 +52,7 @@ function InventoryTable({inventories, warehouses}) {
                                 <td className="table__position7 table__item--inventory"><img src={deleted} alt="deleted" /></td>
                                 <td className="table__position8 table__item--inventory"><img src={edit} alt="edit" /></td>
                                 <td className="table__position9 table__item--inventory display-none__mobile">
-                                    <img src={deleted} alt="deleted" />
+                                    <button type="button" ><img src={deleted} alt="deleted" /></button>
                                     <img src={edit} alt="edit" />
                                 </td>
                             </tr>
