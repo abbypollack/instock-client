@@ -1,0 +1,31 @@
+@use '../../styles/partials/_globals.scss' as *;
+@use '../../styles/partials/_mixins.scss' as *;
+@use '../../styles/partials/_typography.scss' as *;
+@use '../../styles/partials/_variables.scss' as *;
+
+.search-container{
+    background-color: $primary-white;
+    display: flex;
+    justify-content: center;
+    border-radius: 25px;
+    border: 1px solid $secondary-cloud;
+    width: 15.625rem;
+
+    @include tablet{
+        width: 200px;
+        padding: .3125rem;
+        padding-left: .625rem;
+    }
+
+    &__input{
+        border: none;
+    }
+    &__icon{
+        padding-left: 4.375rem;
+        @include tablet{
+            padding-left: 0;
+        }
+    }
+}
+
+
