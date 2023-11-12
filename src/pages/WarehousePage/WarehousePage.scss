@@ -1,0 +1,54 @@
+@use '../../styles/partials/_globals.scss' as *;
+@use '../../styles/partials/_mixins.scss' as *;
+@use '../../styles/partials/_typography.scss' as *;
+@use '../../styles/partials/_variables.scss' as *;
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include tablet{
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        padding-bottom: 1.25rem;
+        padding-top: 1.25rem;
+        justify-content: space-around;
+    }
+    @include desktop{
+        justify-content: space-between;
+    }
+
+    &__h1{
+        display: flex;
+        @include desktop{
+            padding-left: 1.875rem;
+        }
+    }
+
+    &__bttbar{
+        
+        @include tablet{
+            display: flex;
+            flex-direction: row;
+            align-items: center
+        }
+        @include desktop{
+            padding-right: 1.875rem
+        }
+
+        &-add-warehouse{
+            @include cta-button;
+            background-color: $primary-blue;
+            color:$primary-white;
+            margin-top: .625rem;
+            margin-bottom: .625rem;
+            @include tablet{
+                margin-left: 20px;
+            }
+        }
+    }
+
+    
+}
