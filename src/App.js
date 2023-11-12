@@ -6,7 +6,7 @@ import InventoryItemDetailsPage from './pages/InventoryItemDetails/InventoryItem
 import AddInventoryItemPage from './pages/AddInventoryItem/AddInventoryItem';
 import EditInventoryItemPage from "./pages/EditInventoryItem/EditInventoryItem";
 import WarehouseDetailsPage from './pages/WarehouseDetailsPage/WarehouseDetailsPage';
-// import AddNewWarehouse from './pages/AddNewWarehouse/AddNewWarehouse';
+import AddNewWarehouse from './pages/AddNewWarehouse/AddNewWarehouse';
 // import EditInventoryItem from './pages/EditInventoryItem/EditInventoryItem';
 // import EditWarehouse from './pages/EditWarehouse/EditWarehouse';
 import WarehousePage from './pages/WarehousePage/WarehousePage';

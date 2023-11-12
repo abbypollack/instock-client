@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import X from '../../assets/icons/close-24px.svg'
 import './DeleteWarehouse.scss'
-
 import axios from 'axios';
 
 function DeleteWarehouse({ openDelete, warehouse }) {
