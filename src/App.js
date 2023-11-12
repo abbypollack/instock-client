@@ -18,14 +18,15 @@ function App() {
         <BrowserRouter>
             <Header />
             <Routes>
+
                 <Route path="/warehouses" element={<WarehousePage />} />
-                <Route path="/warehouse/details" element={<WarehouseDetailsPage />} />
+                <Route path="/warehouse/:warehouseId" element={<WarehouseDetailsPage />} />
                 {/* <Route path="" element={<WarehouseDetails />} /> */}
                 <Route path="/inventory" element={<InventoryPage />} />
                 <Route path="/inventory/:itemId" element={<InventoryItemDetailsPage />} />
                 {/* <Route path="" element={<EditWarehouse />} /> */}
                 <Route path="/inventory/edit/:itemId" element={<EditInventoryItemPage />} />
-                {/* <Route path="" element={<AddNewWarehouse />} /> */}
+                <Route path="/warehouses/add" element={<AddNewWarehouse />} />
                 <Route path="/inventory/add" element={<AddInventoryItemPage />} />
             </Routes>
             <Footer />

@@ -1,31 +1,21 @@
 @use '../../styles/partials/variables' as *;
-
+@use '../../styles/partials/mixins' as *;
 .table {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    // width: 100%;
-    // margin: 1.25rem;
-    // width: auto;
-    width: fit-content;
-    &__inventory {
-        border-collapse: collapse;
-        // width: 100%;
-        // width: auto;
+    &__container {
+        &--inventory > thead > tr > th  {
+            width: 50%;
+        }
+        &--inventory 
+            > tbody > tr > td  {
+            @include tablet {
+                width: 15%;
+            }
+        }
+        &--inventory 
+            > thead > tr > th  {
+            @include tablet {
+                width: 15%;
+            }
+        }
     }
-}
-
-th, td {
-    text-align: left;
-    padding: 1rem 1.5rem;
-    font-size: .8rem;
-}
-td {
-    border-bottom: 1px solid #ccc;
-    text-transform: capitalize;
-}
-th {
-    // font-size: .7rem;
-    background-color: #f2f2f2;
-    text-transform: uppercase;
 }
