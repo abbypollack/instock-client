@@ -4,11 +4,18 @@ import edit from '../../assets/icons/edit-24px.svg'
 import sort from '../../assets/icons/sort-24px.svg'
 import chevron from '../../assets/icons/chevron_right-24px.svg'
 import '../GlobalTable/GlobalTable.scss';
-import React, { Component } from "react";
-// import {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
+import DeleteInventory from '../DeleteModalInv/DeletModalInv';
 // import delete from '../DeleteModalInv/DeletModalInv'; 
 
 function InventoryTable({inventories, warehouses}) {
+    const [deleteModal, setDeleteModal] = useState(false);
+    const [selectedInventory, setSelectedInventory] = useState(null);
+
+    const clickInventoryDelete = (inventories) => {
+        setSelectedInventory(inventories);
+        setDeleteModal(true);
+    }
     // const [items, setItems] = useState([]);
 
     // useEffect(() => {
@@ -49,10 +56,10 @@ function InventoryTable({inventories, warehouses}) {
                                 <td className="table__position4 table__item--inventory"><p>Quantity:</p>{inventory.quantity}</td>
                                 <td className="table__position5 table__item--inventory"><p>Warehouse:</p>{warehouses.find((warehouse) => warehouse.id === inventory.warehouse_id)?.warehouse_name || inventory.warehouse_name}</td>
                                 <td className="table__position6 table__item--inventory visibility-hidden"><p>Actions</p></td>
-                                <td className="table__position7 table__item--inventory"><img src={deleted} alt="deleted" /></td>
+                                <td className="table__position7 table__item--inventory"><img src={deleted} alt="deleted" onClick={() => clickInventoryDelete(inventory)}/></td>
                                 <td className="table__position8 table__item--inventory"><img src={edit} alt="edit" /></td>
                                 <td className="table__position9 table__item--inventory display-none__mobile">
-                                    <button type="button" ><img src={deleted} alt="deleted" /></button>
+                                    <img  src={deleted} alt="deleted" onClick={() => clickInventoryDelete(inventory)} />
                                     <img src={edit} alt="edit" />
                                 </td>
                             </tr>
@@ -60,6 +67,9 @@ function InventoryTable({inventories, warehouses}) {
                     
                 </tbody>
             </table>
+            <section className='table__modal'>
+                    {deleteModal && <DeleteInventory openDelete={setDeleteModal} inventory={selectedInventory}/>}
+            </section>
         </div>
     )
 }
