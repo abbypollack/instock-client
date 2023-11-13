@@ -8,28 +8,28 @@ import './WarehousePage.scss';
 function WarehousePage() {
     const [warehouse, setWarehouse] = useState([]);
 
-        useEffect(() => {
-                async function getWarehouse() {
-                    const response = await axios.get(`${API_URL}/api/warehouses`);
-                    setWarehouse(response.data);
-                    console.log(response.data);
-                } getWarehouse();
-            }, []);
+    useEffect(() => {
+        async function getWarehouse() {
+            const response = await axios.get(`${API_URL}/api/warehouses`);
+            setWarehouse(response.data);
+            console.log(response.data);
+        } getWarehouse();
+    }, []);
 
     return (
-        <>
-        <div className='container'>
-            <div className='container__h1'>
-                <h1 className='container__h1-title'>Warehouse</h1>
-            </div>
+        <section className='warehouse-list'>
+            <div className='container'>
+                <div className='container__h1'>
+                    <h1 className='container__h1-title'>Warehouse</h1>
+                </div>
 
-            <div className='container__bttbar'>
-                <SearchBar/>
-                <button className='container__bttbar-add-warehouse'>Add New Warehouse</button>
+                <div className='container__bttbar'>
+                    <SearchBar />
+                    <button className='container__bttbar-add-warehouse'>Add New Warehouse</button>
+                </div>
             </div>
-        </div>
-        <WarehouseTable warehouse={warehouse}/>
-        </>
+            <WarehouseTable warehouse={warehouse} />
+        </section>
     )
 }
 export default WarehousePage;

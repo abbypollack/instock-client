@@ -1,4 +1,18 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/typography' as *;
+@use '../../styles/partials/mixins' as *;
+
 .footer {
     display: flex;
     justify-content: center;
+    align-items: flex-end;
+    @include mobile-body-small-text;
+
+    @include tablet {
+        @include tablet-body-small-text;
+    }
+
+    &__text {
+        color: $secondary-slate;
+    }
 }
