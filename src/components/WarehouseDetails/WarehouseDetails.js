@@ -22,9 +22,9 @@ function WarehouseDetails(){
             <section className="warehouse-inventory__subheader">
                 <section className='warehouse-inventory__box-1'>
                 <div className="warehouse-inventory__subheader--address">
-                    <h3 className='warehouse-inventory__'>Warehouse Address:</h3>
-                    <p className='warehouse-inventory__'>'JSX address'</p>
-                    <p className='warehouse-inventory__'>'JSX city', 'state'</p>
+                    <h3 className='warehouse-inventory__ table__position1'>Warehouse Address:</h3>
+                    <p className='warehouse-inventory__ table__position2'>'JSX address'</p>
+                    <p className='warehouse-inventory__ table__position4'>'JSX city', 'state'</p>
                 </div>
                 </section>
                 <section className='warehouse-inventory__box-2'>

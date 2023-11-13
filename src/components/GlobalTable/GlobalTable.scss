@@ -1,6 +1,7 @@
 @use '../../styles/partials/variables' as *;
 @use '../../styles/partials/mixins' as *;
 
+//global table styling
 .table {
     display: flex;
     justify-content: center;
@@ -84,8 +85,9 @@ table {
             @include tablet-table-header;
         }
     }
-    @include tablet {
-        tr {
+    tr {
+        font-weight: 400;
+        @include tablet {
             display: flex;
             flex-direction: row;
         }
@@ -110,13 +112,16 @@ table {
             }
         }
         tr {
+            padding-left: 1.25rem;
             display: flex;
             flex-wrap: wrap;
             @include divider;
+            padding-top: 1rem;
         }
         td, th {
             display: flex;
             flex-direction: column;
+            @include padding-bottom-components;
             img {
             width: 1rem;
             }
@@ -141,6 +146,7 @@ table {
     }
 }
 
+//global table page styling
 .list-container {
     @include mobile-header-text;
     @include padding-headlines;
@@ -175,6 +181,13 @@ table {
     
     &__heading{
         display: flex;
+        font-size: 1.75rem;
+        line-height: 2.25rem;
+        font-weight: 600;
+        color: #13182c;
+        font-family: "titillium-semibold";
+        padding-top: 1.5rem;
+        padding-bottom: 1rem;
         @include desktop{
             padding-left: 1.875rem;
         }
