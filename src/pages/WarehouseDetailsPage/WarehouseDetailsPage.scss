@@ -5,8 +5,12 @@
 
 .warehouse-inventory {
     background-color: $primary-white;
-    margin: 0 2rem;
+    width: 90%;
+    margin: auto;
     box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+    @include desktop {
+
+    }
     &__title {
         @include mobile-header-text;
         @include padding-headlines;
@@ -18,11 +22,13 @@
         &-container {
             @include divider;
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             padding: $mobile-padding-left-right;
             @include tablet {
                 padding: $tablet-padding-left-right;
                 justify-content: flex-start;
+                display: flex;
+                justify-content: space-between;
 
 
             }
@@ -48,14 +54,24 @@
         @include tablet {
             padding-right: 4rem;
             border-bottom: none;
+
+        }
+        @include desktop {
+            padding-right: 8rem;
+            width: 70%;
         }
     }
     &__subheader {
+        margin: 0 1rem;
         @include tablet {
             display: flex;
             justify-content: space-between;
             margin: 1rem;
         }
+    }
+    &__address {
+        width: 100%;
+        display: flex;
     }
     &__sub-title {
         font-size: 1rem;
@@ -65,7 +81,16 @@
         justify-content: space-around;
         @include padding-bottom-components;
         @include divider;
+        @include tablet {
+            border-bottom: none;
+        }
+        @include desktop {
 
+        }
+
+    }
+    &__block-1 {
+        display: flex;
     }
     &__subheader--contact-name {
         @include tablet {
@@ -89,11 +114,22 @@
             border-style: none;
             margin-top: 1.5rem;
             @include tablet {
-                margin-left: 25rem;
-                width: .625rem;
-                margin-left: 23rem;
-                width: 4.625rem;
+                // margin-left: 25rem;
+                // width: .625rem;
+                // margin-left: 23rem;
+                // width: 4.625rem;
             }
 
     
+}
+.button__edit {
+    display: none;
+
+        @include tablet {
+            display: inline-block;
+            @include tablet-labels-links-buttons-text;
+            color: $primary-white;
+            font-family: 'titillium-semibold';
+            margin-right: .25rem;
+        }
 }
