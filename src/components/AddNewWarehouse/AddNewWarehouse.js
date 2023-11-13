@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
@@ -82,7 +82,7 @@ function AddNewWarehouseComponent() {
         };
 
         try {
-            const response = await axios.post('http://localhost:8081/api/warehouses', payload);
+        await axios.post('http://localhost:8081/api/warehouses', payload);
         } catch (error) {
             const errorMessage = error.response ? error.response.data.error : error.message;
             alert(`There was an error adding the new warehouse: ${errorMessage}`);
