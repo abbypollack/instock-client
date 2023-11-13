@@ -22,7 +22,7 @@ function WarehouseTable({ warehouse }) {
     const clickWarehouseEdit = (warehouseEdit) => {
         console.log(warehouseEdit)
         setSelectedWarehouse(warehouseEdit);
-        navigate(`/warehouses/edit/${warehouseEdit}`)
+        navigate(`/warehouses/edit/${warehouse}`)
     }
 
     // add functionality after Jorge completes warehouse page
