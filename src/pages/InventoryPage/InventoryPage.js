@@ -2,6 +2,10 @@ import InventoryTable from '../../components/InventoryTable/InventoryTable';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { API_URL } from '../../utils';
+import { useNavigate } from 'react-router-dom';
+import SearchBar from '../../components/SearchBar/SearchBar';
+
+
 
 function InventoryPage() {
     const [inventory, setInventory] = useState([]);
@@ -20,13 +24,29 @@ function InventoryPage() {
             } getWarehouses();
         }, []);
 
-    return (
-        <div>
-            <h1>Inventory</h1>
-            {/* <SearchBar />
-            <AddButton text={Item}/> */}
-            <InventoryTable inventories={inventory} warehouses={warehouse}/>
-        </div>
-    )
-}
+        const navigate = useNavigate();
+        const clickAddItem = () => {
+            navigate(`/inventory/add`)
+        }
+    
+        return (
+            <section className="list-container">
+                <div className="list-container__header">
+                    <div className="list-container__heading">
+                        <h1 className="list-container__heading-title">Inventory</h1>
+                    </div>
+    
+                    <div className="list-container__button-bar">
+                        <SearchBar />
+                        <button className="list-container__button-bar--add"
+                        onClick={() => clickAddItem()}>
+                            Add New Item
+                        </button>
+                    </div>
+                </div>
+                <InventoryTable inventories={inventory} warehouses={warehouse}/>                
+            </section>
+        )
+    }
+
 export default InventoryPage;

@@ -1,0 +1,103 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.delete-inventory {
+    &__background {
+        background-color: rgba($color: $primary-black, $alpha: 0.5);
+        position: relative;
+        top: 0em;
+        right: 0em;
+        bottom: 0em;
+        left: 0em;
+        display: flex;
+        justify-content: center;
+        position: fixed;
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        background-color: $primary-white;
+        padding: $mobile-padding-left-right;
+
+        @include tablet {
+            background-color: $primary-white;
+            padding: $tablet-padding-left-right;
+            position: absolute;
+            top: 5em;
+            right: 3em;
+            width: 42em;
+            height: 18em;
+        }
+        @include desktop {
+            background-color: $primary-white;
+            padding: $desktop-padding-left-right;
+            position: absolute;
+            top: 5em;
+            right: 19em;
+            width: 42em;
+            height: 14em;
+        }
+    }
+
+    &__close-button {
+        position: absolute;
+        right: 1em;
+        top: 1em;
+    }
+
+    &__header {
+        @include mobile-header-text;
+        padding-top: 2em;
+        font-size: 2em;
+
+        @include tablet {
+            @include tablet-header-text;
+        }
+        @include tablet {
+            padding-top: 1em;
+        }
+    }
+
+    &__body {
+        @include mobile-body-large-text;
+        padding-top: 1.5rem;
+        font-size: 0.85rem;
+
+        @include tablet {
+            @include tablet-body-medium-text;
+            font-size: 1.15em;
+        }
+    }
+
+    &__buttons {
+        display: flex;
+
+        @include tablet {
+            width: 25%;
+            margin-left: 28em;
+            padding-bottom: 1em;
+        }
+
+        &-bottom {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 75vh;
+        }
+
+        &-cancel {
+            @include cta-button;
+            background-color: $primary-white;
+            color: $secondary-slate;
+            border: 1px solid $secondary-cloud;
+            margin-right: .9375rem;
+        }
+
+        &-delete {
+            @include cta-button;
+            color: $primary-white;
+            background-color: $supporting-red;
+        }
+    }
+}

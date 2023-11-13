@@ -1,6 +1,7 @@
 @use '../../styles/partials/variables' as *;
 @use '../../styles/partials/mixins' as *;
 
+//global table styling
 .table {
     display: flex;
     justify-content: center;
@@ -9,13 +10,9 @@
         width: 50%;
     }
     &__container {
-        width: 21.4375rem;
-        border-collapse: collapse;
-        border-radius: 3px;
-        background:  #FFF;
-        box-shadow: 0px 2px 5px 0px rgba(19, 24, 44, 0.10);
+        // width: 21.4375rem;
         @include tablet {
-            width: 44rem;
+            width: 100%;
         }
     }
     &__position1 {
@@ -88,8 +85,9 @@ table {
             @include tablet-table-header;
         }
     }
-    @include tablet {
-        tr {
+    tr {
+        font-weight: 400;
+        @include tablet {
             display: flex;
             flex-direction: row;
         }
@@ -114,13 +112,16 @@ table {
             }
         }
         tr {
+            padding-left: 1.25rem;
             display: flex;
             flex-wrap: wrap;
             @include divider;
+            padding-top: 1rem;
         }
         td, th {
             display: flex;
             flex-direction: column;
+            @include padding-bottom-components;
             img {
             width: 1rem;
             }
@@ -143,4 +144,75 @@ table {
     @include tablet {
         display: block;
     }
+}
+
+//global table page styling
+.list-container {
+    @include mobile-header-text;
+    @include padding-headlines;
+    border-radius: 3px;
+    background:  #FFF;
+    box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+    width: 90%;
+    margin: auto;
+    @include tablet {
+        @include tablet-header-text;
+        display: flex;
+        flex-direction: column;
+        border-collapse: collapse;
+    }
+    &__header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        @include tablet{
+            display: flex;
+            flex-direction: row;
+            align-items: baseline;
+            padding-bottom: 1.25rem;
+            padding-top: 1.25rem;
+            justify-content: space-around;
+        }
+        @include desktop{
+            justify-content: space-between;
+        }    
+    }
+    
+    &__heading{
+        display: flex;
+        font-size: 1.75rem;
+        line-height: 2.25rem;
+        font-weight: 600;
+        color: #13182c;
+        font-family: "titillium-semibold";
+        padding-top: 1.5rem;
+        padding-bottom: 1rem;
+        @include desktop{
+            padding-left: 1.875rem;
+        }
+    }
+    
+    &__button-bar{
+        
+        @include tablet{
+            display: flex;
+            flex-direction: row;
+            align-items: center
+        }
+        @include desktop{
+            padding-right: 1.875rem
+        }
+    
+        &--add{
+            @include cta-button;
+            background-color: $primary-blue;
+            color:$primary-white;
+            margin-top: .625rem;
+            margin-bottom: .625rem;
+            @include tablet{
+                margin-left: 20px;
+            }
+        }
+    }  
 }
