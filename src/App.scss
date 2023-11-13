@@ -8,3 +8,14 @@
   font-family: 'Titillium', Arial, Helvetica, sans-serif;
 }
 
+.inventory-item-details,
+.add-inventory-item,
+.edit-inventory-item,
+.inventory-list,
+.add-warehouse-item,
+.edit-warehouse-item,
+.warehouse-details,
+.warehouse-list {
+  position: relative;
+  top: -80px;
+}
