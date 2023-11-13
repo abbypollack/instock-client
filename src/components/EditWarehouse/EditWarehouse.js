@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import arrowBackIcon from '../../assets/icons/arrow_back-24px.svg';
@@ -9,6 +9,30 @@ function EditWarehouse() {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({ warehouseName: '', address: '', city: '', country: '', contactName: '', position: '', phone: '', email: '' });
     const [errors, setErrors] = useState({});
+
+    useEffect(() => {
+        const fetchWarehouseDetails = async () => {
+            try {
+                const response = await axios.get(`http://localhost:8081/api/warehouses/${warehouseId}`);
+                const warehouseData = response.data;
+                setFormData({
+                    warehouseName: warehouseData.warehouse_name || '',
+                    address: warehouseData.address || '',
+                    city: warehouseData.city || '',
+                    country: warehouseData.country || '',
+                    contactName: warehouseData.contact_name || '',
+                    position: warehouseData.contact_position || '',
+                    phone: warehouseData.contact_phone || '',
+                    email: warehouseData.contact_email || '',
+                });
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        if (warehouseId) {
+            fetchWarehouseDetails();
+        }
+    }, [warehouseId]);
 
     const handleChange = (x) => {
         const name = x.target.name;
