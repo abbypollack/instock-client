@@ -49,7 +49,7 @@ function WarehouseDetailsPage({warehouse}){
                 <img className="warehouse-inventory__title-icon" src={arrowBackIcon} alt="arrow back" />
             {/* </Link> */}
                 <h1 className="warehouse-inventory__title">{warehouseDetails?.warehouse_name}</h1>
-                <button className="button__button button__edit"><img src={editIcon} onClick={handleCancel} alt="edit"/></button>
+                <button className="button__button button__edit"><img src={editIcon} onClick={handleEdit} alt="edit"/></button>
             </div>
             <section className="warehouse-inventory__subheader">
                 <section className='warehouse-inventory__box-1'>
