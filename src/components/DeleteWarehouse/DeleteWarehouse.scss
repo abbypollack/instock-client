@@ -25,9 +25,9 @@
             padding: $tablet-padding-left-right;
             position: absolute;
             top: 5em;
-            right: 3em;
-            width: 42em;
-            height: 18em;
+            right: 2em;
+            width: 20em;
+            height: 8em;
         }
         @include desktop {
             background-color: $primary-white;
@@ -53,9 +53,7 @@
 
         @include tablet {
             @include tablet-header-text;
-        }
-        @include tablet {
-            padding-top: 1em;
+            padding-top: 2em;
         }
     }
 
@@ -66,7 +64,7 @@
 
         @include tablet {
             @include tablet-body-medium-text;
-            font-size: 1.15em;
+            font-size: 0.5em;
         }
     }
 
@@ -75,15 +73,15 @@
 
         @include tablet {
             width: 25%;
-            margin-left: 28em;
-            padding-bottom: 1em;
+            margin-left: 12em;
+            padding-top: 1em;
         }
 
         &-bottom {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            height: 75vh;
+            height: 8vh;
         }
 
         &-cancel {
