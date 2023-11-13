@@ -5,6 +5,7 @@ import axios from 'axios';
 import { API_URL } from '../../utils';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import './WarehousePage.scss';
+import "../../components/GlobalTable/GlobalTable.scss"
 
 function WarehousePage() {
     const [warehouse, setWarehouse] = useState([]);
@@ -23,15 +24,15 @@ function WarehousePage() {
     }
 
     return (
-        <section className='warehouse-list'>
-            <div className='container'>
-                <div className='container__h1'>
-                    <h1 className='container__h1-title'>Warehouse</h1>
+        <section className="list-container">
+            <div className="list-container__header">
+                <div className="list-container__heading">
+                    <h1 className="list-container__heading-title">Warehouse</h1>
                 </div>
 
-                <div className='container__bttbar'>
+                <div className="list-container__button-bar">
                     <SearchBar />
-                    <button className='container__bttbar-add-warehouse'
+                    <button className="list-container__button-bar--add"
                     onClick={() => clickWarehouseAdd()}>
                         Add New Warehouse
                     </button>
