@@ -56,7 +56,7 @@ function WarehouseDetailsPage({warehouse}){
                 <div className="warehouse-inventory__subheader--address">
                     <h3 className='warehouse-inventory__sub-title'>Warehouse Address:</h3>
                     <p className='warehouse-inventory__'>{warehouseDetails?.address}</p>
-                    <p className='warehouse-inventory__'>{warehouseDetails?.city}, {warehouseDetails?.state}</p>
+                    <p className='warehouse-inventory__'>{warehouseDetails?.city}, {warehouseDetails?.state} {warehouseDetails?.country}</p>
                 </div>
                 </section>
                 <section className='warehouse-inventory__box-2'>
