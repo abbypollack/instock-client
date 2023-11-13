@@ -1,5 +1,5 @@
 import './WarehouseTable.scss';
-import { useNavigate, NavLink } from 'react-router-dom';
+import { useNavigate, useParams, NavLink } from 'react-router-dom';
 import DeleteWarehouse from '../DeleteWarehouse/DeleteWarehouse';
 import React, { useState } from 'react';
 import deleted from '../../assets/icons/delete_outline-24px.svg'
@@ -10,6 +10,7 @@ import '../GlobalTable/GlobalTable.scss';
 
 
 function WarehouseTable({ warehouse }) {
+    const { warehouseId } = useParams();
     const [deleteModal, setDeleteModal] = useState(false);
     const [selectedWarehouse, setSelectedWarehouse] = useState(null);
 
@@ -19,10 +20,11 @@ function WarehouseTable({ warehouse }) {
     }
 
     const navigate = useNavigate();
+
     const clickWarehouseEdit = (warehouseEdit) => {
         console.log(warehouseEdit)
         setSelectedWarehouse(warehouseEdit);
-        navigate(`/warehouses/edit/${warehouse}`)
+        navigate(`/warehouses/edit/${warehouseEdit.id}`)
     }
 
     // add functionality after Jorge completes warehouse page
