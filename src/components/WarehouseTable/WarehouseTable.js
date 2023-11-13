@@ -1,4 +1,5 @@
 import './WarehouseTable.scss';
+import { useNavigate, NavLink } from 'react-router-dom';
 import DeleteWarehouse from '../DeleteWarehouse/DeleteWarehouse';
 import React, { useState } from 'react';
 import deleted from '../../assets/icons/delete_outline-24px.svg'
@@ -17,6 +18,13 @@ function WarehouseTable({ warehouse }) {
         setDeleteModal(true);
     }
 
+    const navigate = useNavigate();
+    const clickWarehouseEdit = (warehouseEdit) => {
+        console.log(warehouseEdit)
+        setSelectedWarehouse(warehouseEdit);
+        navigate(`/warehouses/edit/${warehouseEdit}`)
+    }
+
     // add functionality after Jorge completes warehouse page
     return (
         <div className="table">
@@ -33,7 +41,12 @@ function WarehouseTable({ warehouse }) {
                 <tbody>
                     {warehouse.map((info) => (
                         <tr key={info.id}>
-                            <td className="table__position1"><p>Warehouse:</p>{info.warehouse_name}<img src={chevron} alt="chevron" /></td>
+                            <td className="table__position1">
+                                <NavLink to={`/warehouses/${info.id}`}><p>Warehouse:</p>
+                                    {info.warehouse_name}
+                                    <img src={chevron} alt="chevron" />
+                                </NavLink>
+                            </td>
                             <td className="table__position2"><p>Address:</p>{info.address} {info.city} {info.country}</td>
                             <td className="table__position3"><p>Contact Name:</p>{info.contact_name}</td>
                             <td className="table__position4"><p>Contact Information:</p>{info.contact_phone}{info.contact_email}</td>
@@ -41,18 +54,21 @@ function WarehouseTable({ warehouse }) {
                                 //This line opens the delete component as a modal 
                                 onClick={() => clickWarehouseDelete(info)} />
                             </td>
-                            <td className="table__position8"><img src={edit} alt="edit" /></td>
+                            <td className="table__position8"><img src={edit} alt="edit"
+                                onClick={() => clickWarehouseEdit(info)} /></td>
                             <td className="table__position9 display-none__mobile">
                                 <img src={deleted} alt="deleted"
                                     onClick={() => clickWarehouseDelete(info)} />
-                                <img src={edit} alt="edit" />
+
+                                <img src={edit} alt="edit"
+                                    onClick={() => clickWarehouseEdit(info)} />
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
             <section className='table__modal'>
-                {deleteModal && <DeleteWarehouse openDelete={setDeleteModal} warehouse={selectedWarehouse}/>}
+                {deleteModal && <DeleteWarehouse openDelete={setDeleteModal} warehouse={selectedWarehouse} />}
             </section>
         </div>
     )

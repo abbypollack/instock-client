@@ -1,4 +1,5 @@
 import WarehouseTable from '../../components/WarehouseTable/WarehouseTable';
+import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { API_URL } from '../../utils';
@@ -16,6 +17,11 @@ function WarehousePage() {
         } getWarehouse();
     }, []);
 
+    const navigate = useNavigate();
+    const clickWarehouseAdd = (warehouseAdd) => {
+        navigate(`/warehouses/add`)
+    }
+
     return (
         <section className='warehouse-list'>
             <div className='container'>
@@ -25,7 +31,10 @@ function WarehousePage() {
 
                 <div className='container__bttbar'>
                     <SearchBar />
-                    <button className='container__bttbar-add-warehouse'>Add New Warehouse</button>
+                    <button className='container__bttbar-add-warehouse'
+                    onClick={() => clickWarehouseAdd()}>
+                        Add New Warehouse
+                    </button>
                 </div>
             </div>
             <WarehouseTable warehouse={warehouse} />
