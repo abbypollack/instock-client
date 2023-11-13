@@ -72,11 +72,12 @@ function WarehouseDetailsPage({warehouse}){
                         <p className='warehouse-inventory__'>{warehouseDetails?.contact_email}</p>
                     </div>
                     </div>
+                    
                 </section>
-                <div>
-                    <WarehouseDetailstable/>
-                </div>
             </section>
+            <div>
+                <WarehouseDetailstable/>
+            </div>
         </section>
         </>
     )
