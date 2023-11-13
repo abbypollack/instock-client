@@ -1,0 +1,98 @@
+@use '../../styles/partials/globals' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/typography' as *;
+@use '../../styles/partials/variables' as *;
+
+.warehouse-inventory {
+    background-color: $primary-white;
+    margin: 0 2rem;
+    &__title {
+        @include mobile-header-text;
+        @include padding-headlines;
+
+        @include tablet {
+            @include tablet-header-text;
+            padding-left: .5rem;
+        }
+        &-container {
+            @include divider;
+            display: flex;
+            justify-content: space-around;
+            padding: $mobile-padding-left-right;
+            @include tablet {
+                padding: $tablet-padding-left-right;
+                justify-content: flex-start;
+
+
+            }
+            @include desktop {
+                padding: $desktop-padding-left-right;
+            }
+        }
+        &-icon {
+            @include padding-headlines;
+            
+            
+        }
+    }
+    &__subheader * h3 {
+        @include mobile-table-header;
+        @include padding-headlines;
+        text-transform: uppercase;
+        @include tablet {
+            display: flex;
+        }
+    }
+    &__box-2 {
+        @include tablet {
+            padding-right: 4rem;
+            border-bottom: none;
+        }
+    }
+    &__subheader {
+        @include tablet {
+            display: flex;
+            justify-content: space-between;
+            margin: 1rem;
+        }
+    }
+    &__sub-title {
+        font-size: 1rem;
+    }
+    &__subheader--contact{
+        display: flex;
+        justify-content: space-around;
+        @include padding-bottom-components;
+        @include divider;
+
+    }
+    &__subheader--contact-name {
+        @include tablet {
+            padding-left: 2rem;
+            border-left: 1px solid $secondary-cloud;
+        }
+    }
+    &__subheader--contact-info {
+        @include tablet {
+            margin-left: 2rem;
+        }
+    }
+}
+.button__button {
+    background-color: $primary-blue;
+            border-radius: 20px;
+            height: fit-content;
+            display: flex;
+            align-items: center;
+            padding: .5rem;
+            border-style: none;
+            margin-top: 1.5rem;
+            @include tablet {
+                margin-left: 25rem;
+                width: .625rem;
+                margin-left: 23rem;
+                width: 4.625rem;
+            }
+
+    
+}

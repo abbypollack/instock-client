@@ -1,7 +1,7 @@
 import './App.scss';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from './components/Footer/Footer.js';
-import Header from './components/Header/Header.js';
+import Header from './components/Header/Header';
 import InventoryItemDetailsPage from './pages/InventoryItemDetails/InventoryItemDetails';
 import AddInventoryItemPage from './pages/AddInventoryItem/AddInventoryItem';
 import EditInventoryItemPage from "./pages/EditInventoryItem/EditInventoryItem";

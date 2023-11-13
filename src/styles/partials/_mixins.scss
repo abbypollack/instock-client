@@ -149,6 +149,9 @@
     @include tablet-labels-links-buttons-text;
   }
 }
+@mixin button {
+  
+}
 
 // Tags Mixins
 @mixin out-of-stock-tag {
