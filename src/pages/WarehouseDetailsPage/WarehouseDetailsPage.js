@@ -7,7 +7,7 @@ function WarehouseDetailsPage() {
 
 
     return (
-        <div>
+        <div className='warehouse-details'>
             <WarehouseDetailsTable />
         </div>
     )

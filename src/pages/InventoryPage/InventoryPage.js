@@ -21,7 +21,7 @@ function InventoryPage() {
         }, []);
 
     return (
-        <div>
+        <div className='inventory-list'>
             <h1>Inventory</h1>
             {/* <SearchBar />
             <AddButton text={Item}/> */}
