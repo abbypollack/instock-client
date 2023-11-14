@@ -111,7 +111,7 @@ function EditWarehouse() {
             contact_email: formData.email,
         };
         try {
-            const response = await axios.put(`http://localhost:8081/api/warehouses/${warehouseId}`, payload);
+            await axios.put(`http://localhost:8081/api/warehouses/${warehouseId}`, payload);
             navigate('/warehouses')
         } catch (error) {
             const errorMessage = error.response ? error.response.data.error : error.message;

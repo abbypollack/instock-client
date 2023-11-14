@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import X from '../../assets/icons/close-24px.svg'
 import './DeleteWarehouse.scss'
 import axios from 'axios';
 
 function DeleteWarehouse({ openDelete, warehouse }) {
-    const navigate = useNavigate();
     let deleteWarehouse = async () => {
         try {
             await axios.delete(`http://localhost:8081/api/warehouses/${warehouse.id}`);
@@ -20,7 +17,7 @@ function DeleteWarehouse({ openDelete, warehouse }) {
         <section className='delete-warehouse__background'>
             <div className='delete-warehouse__container'>
                 <div className='delete-warehouse__close-button'>
-                    <img src={X} onClick={() => { openDelete(false); }}>
+                    <img src={X} alt='X to cancel out of delete' onClick={() => { openDelete(false); }}>
                     </img>
                 </div>
                 <div className='delete-warehouse__header'>

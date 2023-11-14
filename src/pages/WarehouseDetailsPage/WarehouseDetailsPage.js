@@ -5,12 +5,6 @@ import axios from "axios";
 import arrowBackIcon from "../../assets/icons/arrow_back-24px.svg";
 import editIcon from "../../assets/icons/edit-white-24px.svg";
 import WarehouseDetailstable from "../../components/WarehouseDetailsTable/WarehouseDetailsTable";
-// import deleted from '../../assets/icons/delete_outline-24px.svg'
-// import edit from '../../assets/icons/edit-24px.svg'
-// import sort from '../../assets/icons/sort-24px.svg'
-// import chevron from '../../assets/icons/chevron_right-24px.svg'
-// import InventoryTable from '../../components/InventoryTable/InventoryTable';
-// import InventoryTable from '../../components/InventoryTable/InventoryTable';
 
 function WarehouseDetailsPage({ warehouse }) {
   const [warehouseDetails, setWarehouseDetails] = useState();
@@ -35,7 +29,7 @@ function WarehouseDetailsPage({ warehouse }) {
   }, [warehouseId]);
 
   const handleEdit = () => {
-    navigate(`/warehouses/${warehouseId}`);
+    navigate(`/warehouses/edit/${warehouseId}`);
   };
 
   function handleCancel() {
@@ -46,19 +40,18 @@ function WarehouseDetailsPage({ warehouse }) {
       <section className="warehouse-inventory">
         <div className="warehouse-inventory__title-container">
           <div className="warehouse-inventory__block-1">
-            {/* <Link to="/warehouses"> */}
             <img
               className="warehouse-inventory__title-icon"
               src={arrowBackIcon}
               alt="arrow back"
+              onClick={handleCancel}
             />
-            {/* </Link> */}
             <h1 className="warehouse-inventory__title">
               {warehouseDetails?.warehouse_name}
             </h1>
           </div>
-          <button className="button__button">
-            <img src={editIcon} onClick={handleEdit} alt="edit" />
+          <button className="button__button" onClick={handleEdit}>
+            <img src={editIcon} alt="edit" />
             <span className="button__edit">Edit</span>
           </button>
         </div>
@@ -104,7 +97,7 @@ function WarehouseDetailsPage({ warehouse }) {
             </div>
           </section>
         </section>
-        <div>
+        <div className="warehouse-inventory__table">
           <WarehouseDetailstable />
         </div>
       </section>

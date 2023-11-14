@@ -1,13 +1,9 @@
-import React, { useState , useEffect } from 'react';
 import X from '../../assets/icons/close-24px.svg'
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './DeleteModalInv.scss';
 
 
 function DeleteInventory({ openDelete, inventory }) {
-    const navigate = useNavigate();
-    console.log(inventory)
     let deleteInventory = async () => {
         try {
             await axios.delete(`http://localhost:8081/api/inventories/${inventory.id}`);
@@ -22,7 +18,7 @@ function DeleteInventory({ openDelete, inventory }) {
         <section className='delete-inventory__background'>
         <div className='delete-inventory__container'>
             <div className='delete-inventory__close-button'>
-                <img src={X} onClick={() => { openDelete(false); }}>
+                <img src={X} alt='X to cancel out of delete' onClick={() => { openDelete(false); }}>
                 </img>
             </div>
             <div className='delete-inventory__header'>
