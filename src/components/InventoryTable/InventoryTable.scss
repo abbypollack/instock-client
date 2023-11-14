@@ -8,13 +8,13 @@
         &--inventory 
             > tbody > tr > td  {
             @include tablet {
-                width: 18%;
+                width: 16%;
             }
         }
         &--inventory 
             > thead > tr > th  {
             @include tablet {
-                width: 18%;
+                width: 16%;
             }
         }
     }

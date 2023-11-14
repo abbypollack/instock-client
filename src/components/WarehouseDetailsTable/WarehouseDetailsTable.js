@@ -45,7 +45,7 @@ function WarehouseDetailsTable() {
 
     return (
         <div className="table">
-            <table className="table__container table__container--inventory">
+            <table className="table__container table__container--warehouse-details">
                 <thead>
                     <tr>
                         <th>Inventory Item <img src={sort} alt="sort" /></th>
