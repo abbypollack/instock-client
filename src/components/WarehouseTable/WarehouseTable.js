@@ -49,7 +49,7 @@ function WarehouseTable({ warehouse }) {
                             </td>
                             <td className="table__position2"><p>Address:</p>{info.address} {info.city} {info.country}</td>
                             <td className="table__position3"><p>Contact Name:</p>{info.contact_name}</td>
-                            <td className="table__position4"><p>Contact Information:</p>{info.contact_phone} {info.contact_email}</td>
+                            <td className="table__position4"><p>Contact Information:</p>{info.contact_phone} <br/>{info.contact_email} </td>
                             <td className="table__position7"><img src={deleted} alt="deleted"
                                 //This line opens the delete component as a modal 
                                 onClick={() => clickWarehouseDelete(info)} />

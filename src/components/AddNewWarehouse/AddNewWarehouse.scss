@@ -6,6 +6,10 @@
 .add-warehouse-item {
     background-color: $primary-white;
 
+    &__error{
+        color: $supporting-red;
+        margin-left: 1rem;
+    }
     &__title {
         @include mobile-header-text;
         @include padding-headlines;
@@ -73,7 +77,6 @@
         flex-direction: column;
     }
 
-
     &__input {
         @include form-field;
         padding: 0em 1em;
@@ -137,3 +140,5 @@
         }
     }
 }
+
+

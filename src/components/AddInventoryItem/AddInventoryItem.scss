@@ -100,7 +100,7 @@
             border-right: $secondary-cloud 1px solid;
             padding-right: 3.125rem;
             flex-direction: column;
-            padding: 0 2rem 1rem 2em;
+            padding: 0 2rem 1rem 2rem;
         }
 
         @include desktop {
@@ -117,7 +117,7 @@
 
         @include tablet {
             display: flex;
-            padding: 0 2rem 1rem 2em;
+            padding: 0 2rem 1rem 2rem;
             width: 48%;
             flex-direction: column;
         }

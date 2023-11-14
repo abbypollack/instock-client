@@ -5,10 +5,10 @@
     &__background {
         background-color: rgba($color: $primary-black, $alpha: 0.5);
         position: relative;
-        top: 0em;
-        right: 0em;
-        bottom: 0em;
-        left: 0em;
+        top: 0rem;
+        right: 0rem;
+        bottom: 0rem;
+        left: 0rem;
         display: flex;
         justify-content: center;
         position: fixed;
@@ -24,57 +24,55 @@
             background-color: $primary-white;
             padding: $tablet-padding-left-right;
             position: absolute;
-            top: 5em;
-            right: 2em;
-            width: 20em;
-            height: 8em;
+            margin: auto;
+            width: 70%;
+            padding-bottom: 10%;
+            top: 30%;
         }
         @include desktop {
             background-color: $primary-white;
             padding: $desktop-padding-left-right;
             position: absolute;
-            top: 5em;
-            right: 19em;
-            width: 42em;
-            height: 14em;
+            top: 5rem;
         }
     }
 
     &__close-button {
         position: absolute;
-        right: 1em;
-        top: 1em;
+        right: 1rem;
+        top: 1rem;
     }
 
     &__header {
         @include mobile-header-text;
-        padding-top: 2em;
-        font-size: 2em;
+        padding-top: 2rem;
+        font-size: 2rem;
 
         @include tablet {
             @include tablet-header-text;
-            padding-top: 2em;
+            padding-top: 2rem;
         }
     }
 
     &__body {
         @include mobile-body-large-text;
         padding-top: 1.5rem;
-        font-size: 0.85rem;
-
+        
         @include tablet {
             @include tablet-body-medium-text;
-            font-size: 0.5em;
         }
     }
 
     &__buttons {
         display: flex;
+        position: relative;
+        bottom: -55vh;
 
         @include tablet {
+            position: unset;
             width: 25%;
-            margin-left: 12em;
-            padding-top: 1em;
+            margin-left: 63%;
+            padding-top: 5%;
         }
 
         &-bottom {

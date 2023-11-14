@@ -16,8 +16,13 @@ function AddNewWarehouseComponent() {
             ...prevFormData,
             [name]: value
         }));
-    };
 
+        if (errors[name]) {
+            const newErrors = { ...errors };
+            newErrors[name] = '';
+            setErrors(newErrors);
+        }
+    };
 
     function handleCancel() {
         navigate(-1);
@@ -64,7 +69,6 @@ function AddNewWarehouseComponent() {
         return isValid;
     };
 
-
     const handleSubmit = async (x) => {
         x.preventDefault();
 
@@ -83,6 +87,7 @@ function AddNewWarehouseComponent() {
 
         try {
         await axios.post('http://localhost:8081/api/warehouses', payload);
+        navigate('/warehouses');
         } catch (error) {
             const errorMessage = error.response ? error.response.data.error : error.message;
             alert(`There was an error adding the new warehouse: ${errorMessage}`);
@@ -113,6 +118,7 @@ function AddNewWarehouseComponent() {
                                 value={formData.warehouseName}
                                 onChange={handleChange}
                             />
+                             {errors.warehouseName && <p className="add-warehouse-item__error">{errors.warehouseName}</p>}
                         </div>
 
                         <div className='add-warehouse-item__details'>
@@ -126,6 +132,7 @@ function AddNewWarehouseComponent() {
                                 value={formData.address}
                                 onChange={handleChange}
                             />
+                             {errors.address && <p className="add-warehouse-item__error">{errors.address}</p>}
                         </div>
 
                         <div className='add-warehouse-item__details'>
@@ -139,6 +146,7 @@ function AddNewWarehouseComponent() {
                                 value={formData.city}
                                 onChange={handleChange}
                             />
+                             {errors.city && <p className="add-warehouse-item__error">{errors.city}</p>}
                         </div>
 
                         <div className='add-warehouse-item__details'>
@@ -152,6 +160,7 @@ function AddNewWarehouseComponent() {
                                 value={formData.country}
                                 onChange={handleChange}
                             />
+                             {errors.country && <p className="add-warehouse-item__error">{errors.country}</p>}
                         </div>
                     </div>
                     {/* =============== split forms in half =============== */}
@@ -168,6 +177,7 @@ function AddNewWarehouseComponent() {
                                 value={formData.contactName}
                                 onChange={handleChange}
                             />
+                             {errors.contactName && <p className="add-warehouse-item__error">{errors.contactName}</p>}
                         </div>
 
                         <div className='add-warehouse-item__details'>
@@ -181,6 +191,7 @@ function AddNewWarehouseComponent() {
                                 value={formData.position}
                                 onChange={handleChange}
                             />
+                             {errors.position && <p className="add-warehouse-item__error">{errors.position}</p>}
                         </div>
 
                         <div className='add-warehouse-item__details'>
@@ -194,6 +205,7 @@ function AddNewWarehouseComponent() {
                                 value={formData.phone}
                                 onChange={handleChange}
                             />
+                             {errors.phone && <p className="add-warehouse-item__error">{errors.phone}</p>}
                         </div>
 
                         <div className='add-warehouse-item__details'>
@@ -207,6 +219,7 @@ function AddNewWarehouseComponent() {
                                 value={formData.email}
                                 onChange={handleChange}
                             />
+                             {errors.email && <p className="add-warehouse-item__error">{errors.email}</p>}
                         </div>
                     </div>
                 </section>
