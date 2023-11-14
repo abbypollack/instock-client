@@ -1,11 +1,24 @@
 @use '../../styles/partials/variables' as *;
 @use '../../styles/partials/mixins' as *;
 
-.tag {
-    &__in-stock {
-        @include in-stock-tag;
-    }
-    &__out-of-stock {
-        @include out-of-stock-tag;
+
+.table {
+    &__container {
+        &--warehouse-details 
+        > thead > tr > th  {
+            width: 50%;
+        }
+        &--warehouse-details 
+            > tbody > tr > td  {
+            @include tablet {
+                width: 18%;
+            }
+        }
+        &--warehouse-details
+            > thead > tr > th  {
+            @include tablet {
+                width: 18%;
+            }
+        }
     }
 }

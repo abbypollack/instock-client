@@ -7,7 +7,6 @@ import chevron from '../../assets/icons/chevron_right-24px.svg'
 import '../GlobalTable/GlobalTable.scss';
 import { useState } from 'react';
 import DeleteInventory from '../DeleteModalInv/DeletModalInv';
-// import delete from '../DeleteModalInv/DeletModalInv'; 
 
 function InventoryTable({ inventories, warehouses }) {
     const [deleteModal, setDeleteModal] = useState(false);
@@ -24,22 +23,6 @@ function InventoryTable({ inventories, warehouses }) {
         setSelectedInventory(inventoryEdit);
         navigate(`/inventory/edit/${inventoryEdit}`)
     }
-    // const [items, setItems] = useState([]);
-
-    // useEffect(() => {
-    //     // Simulating fetching data from the JSON file
-    //     const itemsWithDetails = inventories.map((item) => ({
-    //     ...item,
-    //     detailsDisplayed: false,
-    //     }));
-    //     setItems(itemsWithDetails);
-    // }, []);
-
-    // const handleActionsClick = (itemId) => {
-    //     // Handle actions (e.g., delete or edit) here
-    //     console.log(`Actions clicked for item with ID: ${itemId}`);
-    // };
-
 
 
     return (
@@ -64,8 +47,12 @@ function InventoryTable({ inventories, warehouses }) {
                                 </NavLink>
                             </td>
                             <td className="table__position2 table__item--inventory"><p>Category:</p>{inventory.category}</td>
-                            <td className="table__position3 table__item--inventory"><p>Status:</p>{inventory.status}</td>
-                            <td className="table__position4 table__item--inventory"><p>Quantity:</p>{inventory.quantity}</td>
+                            <td className="table__position3 table__item--inventory">
+                                <p>Status</p>
+                                <span className={`tag__${inventory.status.toLowerCase() === 'out of stock' ? 'out-of-stock' : 'in-stock'}`}>
+                                    {inventory.status}
+                                </span>
+                            </td>                            <td className="table__position4 table__item--inventory"><p>Quantity:</p>{inventory.quantity}</td>
                             <td className="table__position5 table__item--inventory"><p>Warehouse:</p>{warehouses.find((warehouse) => warehouse.id === inventory.warehouse_id)?.warehouse_name || inventory.warehouse_name}</td>
                             <td className="table__position6 table__item--inventory visibility-hidden"><p>Actions</p></td>
                             <td className="table__position7 table__item--inventory"><img src={deleted} alt="deleted" onClick={() => clickInventoryDelete(inventory)} /></td>
