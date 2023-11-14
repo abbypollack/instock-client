@@ -71,8 +71,8 @@ function WarehouseDetailsTable() {
                                 </span>
                             </td>
                             <td className="table__position4 table__item--inventory"><p>Qty</p>{warehouse.quantity}</td>
-                            <td className="table__position7 table__item--inventory"><img src={deleted} alt="deleted" /></td>
-                            <td className="table__position8 table__item--inventory"><img src={edit} alt="edit" /></td>
+                            <td className="table__position7 table__item--inventory"><img src={deleted} alt="deleted" onClick={() => clickInventoryDelete(warehouse)}/></td>
+                            <td className="table__position8 table__item--inventory"><img src={edit} alt="edit" onClick={() => clickInventoryEdit(warehouse.id)}/></td>
                             <td className="table__position9 table__item--inventory display-none__mobile">
                                 <img src={deleted} alt="deleted" onClick={() => clickInventoryDelete(warehouse)} />
                                 <img src={edit} alt="edit" onClick={() => clickInventoryEdit(warehouse.id)} />
