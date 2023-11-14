@@ -27,7 +27,7 @@ function WarehouseTable({ warehouse }) {
     }
 
     return (
-        <div className="table">
+        <div className="table table__warehouse">
             <table className="table__container table__container--warehouse">
                 <thead>
                     <tr>
@@ -42,7 +42,7 @@ function WarehouseTable({ warehouse }) {
                     {warehouse.map((info) => (
                         <tr key={info.id}>
                             <td className="table__position1">
-                                <NavLink to={`/warehouses/${info.id}`}><p>Warehouse:</p>
+                                <NavLink to={`/warehouses/${info.id}`} className="blue-text"><p>Warehouse:</p>
                                     {info.warehouse_name}
                                     <img src={chevron} alt="chevron" />
                                 </NavLink>

@@ -59,7 +59,7 @@ function InventoryTable({ inventories, warehouses }) {
                     {inventories.map((inventory) => (
                         <tr key={inventory.id}>
                             <td className="table__position1 table__item--inventory">
-                                <NavLink to={`/inventory/${inventory.id}`}>
+                                <NavLink to={`/inventory/${inventory.id}`} className="blue-text">
                                     <p>Inventory Item:</p>{inventory.item_name}<img src={chevron} alt="chevron" />
                                 </NavLink>
                             </td>

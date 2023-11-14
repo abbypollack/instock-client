@@ -10,7 +10,6 @@
         width: 50%;
     }
     &__container {
-        // width: 21.4375rem;
         @include tablet {
             width: 100%;
         }
@@ -18,7 +17,7 @@
     &__position1 {
             order: 1;
             @include tablet {
-                order: 0;
+                order: 0;                
             }
         }
     &__position2 {
@@ -75,6 +74,9 @@
             order: 0;
         }
     }
+    tr {
+        padding-left: 1.25rem;
+    }
 }
 
 //global table element styling
@@ -95,11 +97,17 @@ table {
     td, th {
         @include tablet {
         display: flex;
+        margin: 0 auto;
         }
     }
     thead {
         th {
             display: none;
+            img {
+                width: 1rem;
+                padding-bottom: 1rem;
+                padding-left: .2rem;
+            }
             @include tablet {
                 display: flex;
             }
@@ -112,7 +120,6 @@ table {
             }
         }
         tr {
-            padding-left: 1.25rem;
             display: flex;
             flex-wrap: wrap;
             @include divider;
@@ -143,6 +150,12 @@ table {
     display: none;
     @include tablet {
         display: block;
+    }
+}
+.blue-text {
+    color: $primary-blue;
+    img {
+        padding-left: .2rem;
     }
 }
 

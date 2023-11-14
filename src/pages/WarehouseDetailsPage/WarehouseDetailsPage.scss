@@ -8,9 +8,6 @@
     width: 90%;
     margin: auto;
     box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
-    @include desktop {
-
-    }
     &__title {
         @include mobile-header-text;
         @include padding-headlines;
@@ -29,8 +26,6 @@
                 justify-content: flex-start;
                 display: flex;
                 justify-content: space-between;
-
-
             }
             @include desktop {
                 padding: $desktop-padding-left-right;
@@ -38,8 +33,6 @@
         }
         &-icon {
             @include padding-headlines;
-            
-            
         }
     }
     &__subheader * h3 {
@@ -53,8 +46,7 @@
     &__box-2 {
         @include tablet {
             padding-right: 4rem;
-            border-bottom: none;
-
+            border-bottom: none
         }
         @include desktop {
             padding-right: 8rem;
@@ -84,10 +76,6 @@
         @include tablet {
             border-bottom: none;
         }
-        @include desktop {
-
-        }
-
     }
     &__block-1 {
         display: flex;
@@ -116,18 +104,9 @@
             padding: .5rem;
             border-style: none;
             margin-top: 1.5rem;
-            @include tablet {
-                // margin-left: 25rem;
-                // width: .625rem;
-                // margin-left: 23rem;
-                // width: 4.625rem;
-            }
-
-    
 }
 .button__edit {
     display: none;
-
         @include tablet {
             display: inline-block;
             @include tablet-labels-links-buttons-text;

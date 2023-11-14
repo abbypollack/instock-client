@@ -7,26 +7,25 @@ import editIcon from "../../assets/icons/edit-white-24px.svg";
 import WarehouseDetailstable from "../../components/WarehouseDetailsTable/WarehouseDetailsTable";
 
 function WarehouseDetailsPage({ warehouse }) {
-  const [warehouseDetails, setWarehouseDetails] = useState();
-  const { warehouseId } = useParams();
-  const navigate = useNavigate();
+    const [warehouseDetails, setWarehouseDetails] = useState();
+    const { warehouseId } = useParams();
+    const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchWarehouseDetails = async () => {
-      try {
-        console.log(warehouseId);
-        const response = await axios.get(
-          `http://localhost:8081/api/warehouses/${warehouseId}`
-        );
-        // console.log(response.data)
-        setWarehouseDetails(response.data);
-      } catch (error) {
-        console.error("this is the error: ", error);
-      }
-    };
+    useEffect(() => {
+        const fetchWarehouseDetails = async () => {
+        try {
+            console.log(warehouseId);
+            const response = await axios.get(
+            `http://localhost:8081/api/warehouses/${warehouseId}`
+            );
+            setWarehouseDetails(response.data);
+        } catch (error) {
+            console.error("this is the error: ", error);
+        }
+        };
 
-    fetchWarehouseDetails();
-  }, [warehouseId]);
+        fetchWarehouseDetails();
+    }, [warehouseId]);
 
   const handleEdit = () => {
     navigate(`/warehouses/edit/${warehouseId}`);

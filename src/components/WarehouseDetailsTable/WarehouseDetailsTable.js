@@ -4,6 +4,7 @@ import sort from '../../assets/icons/sort-24px.svg'
 import chevron from '../../assets/icons/chevron_right-24px.svg'
 import DeleteInventory from '../../components/DeleteModalInv/DeletModalInv';
 import '../GlobalTable/GlobalTable.scss';
+import './WarehouseDetailsTable.scss';
 import { API_URL } from '../../utils';
 import { useState, useEffect } from 'react';
 import { useParams, NavLink, useNavigate } from 'react-router-dom';
@@ -58,12 +59,17 @@ function WarehouseDetailsTable() {
                     {warehouseDetails.map((warehouse) => (
                         <tr key={warehouse.warehouse_id}>
                             <td className="table__position1 table__item--inventory"><p>Inventory Item</p>
-                                <NavLink to={`/inventory/${warehouse.id}`}>
+                                <NavLink to={`/inventory/${warehouse.id}`} className="blue-text">
                                     {warehouse.item_name}<img src={chevron} alt="chevron" />
                                 </NavLink>
                             </td>
                             <td className="table__position2 table__item--inventory"><p>Category</p>{warehouse.category}</td>
-                            <td className="table__position3 table__item--inventory"><p>Status</p>{warehouse.status}</td>
+                            <td className="table__position3 table__item--inventory">
+                                <p>Status</p>
+                                <span className={`tag__${warehouse.status.toLowerCase() === 'out of stock' ? 'out-of-stock' : 'in-stock'}`}>
+                                    {warehouse.status}
+                                </span>
+                            </td>
                             <td className="table__position4 table__item--inventory"><p>Qty</p>{warehouse.quantity}</td>
                             <td className="table__position7 table__item--inventory"><img src={deleted} alt="deleted" /></td>
                             <td className="table__position8 table__item--inventory"><img src={edit} alt="edit" /></td>
