@@ -229,3 +229,12 @@ table {
         }
     }  
 }
+
+.tag {
+    &__in-stock {
+        @include in-stock-tag;
+    }
+    &__out-of-stock {
+        @include out-of-stock-tag;
+    }
+}
