@@ -161,10 +161,6 @@
   text-transform: uppercase;
   width: fit-content;
   margin: auto 0;
-  
-  @include tablet{
-    height: 1.625rem;
-  }
 }
 
 @mixin in-stock-tag {
