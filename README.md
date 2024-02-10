@@ -1,5 +1,5 @@
 **Overview**
-This React application allows users to manage inventory items and warehouses. It utilizes React Router for navigation, Axios for API requests, and includes form handling for adding and editing inventory items and warehouses.
+* This React application allows users to manage inventory items and warehouses. It utilizes React Router for navigation, Axios for API requests, and includes form handling for adding and editing inventory items and warehouses.
 
 **Installation**
 1. Clone the repository to your local machine.
